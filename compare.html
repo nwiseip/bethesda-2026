@@ -117,7 +117,7 @@ td .bstar{color:var(--best-line);font-size:10px;font-weight:800;display:block;ma
         각 항목을 4곳끼리 비교해 <b>0~100점</b>으로 환산한 뒤, 위 중요도로 가중평균한 값이에요.
         <div id="matrix"></div>
         <p style="margin-top:8px">· <b>임대료</b>는 쌀수록, <b>통근</b>은 짧을수록 높은 점수예요.<br>
-        · <b>통근</b>은 MedStar Washington Hospital Center까지 <b>차량 추정 시간</b> 기준이라, 아래 카드의 <b>🚗 출근길</b> 버튼으로 실제 시간을 꼭 확인하세요.<br>
+        · <b>출근길</b>은 부모 직장인 MedStar Washington Hospital Center(워싱턴 DC)까지 <b>차량 추정 시간</b>이에요 — 아이 <b>등교</b>(초등)와는 별개예요. 아래 카드의 <b>🚗 출근길</b> 버튼으로 실제 시간을 꼭 확인하세요.<br>
         · <b>공간</b>은 평수(70%)와 방 개수(30%)를 함께 봤어요.</p>
       </div>
     </details>
@@ -140,7 +140,7 @@ td .bstar{color:var(--best-line);font-size:10px;font-weight:800;display:block;ma
 
   <p class="foot">
     조사기준 2026-07-05 · 배정학교 MCPS · 초등 점수 GreatSchools · 집구경 각 집 Zillow 상세페이지<br>
-    통근시간·거리는 <b>차량 추정치</b>라 실제와 다를 수 있어요(출근길 버튼으로 확인) · 유틸·보증금·반려동물 등 세부조건은 계약 전 집주인·중개인에게 최종 확인하세요.
+    출근길 시간은 직장(MedStar 병원, DC)까지 <b>차량 추정치</b>라 실제와 다를 수 있어요(🚗 출근길 버튼으로 확인) · 아이 등교(초등)와는 별개예요 · 유틸·보증금·반려동물 등 세부조건은 계약 전 집주인·중개인에게 최종 확인하세요.
   </p>
 </div>
 
@@ -224,7 +224,7 @@ HOUSES.forEach(h=>{
 const CRIT=[
   {key:"school", label:"학군", icon:"🏫"},
   {key:"rent",   label:"임대료(낮을수록)", icon:"💲"},
-  {key:"commute",label:"통근(짧을수록)", icon:"🚗"},
+  {key:"commute",label:"출근길(짧을수록)", icon:"🚗"},
   {key:"space",  label:"집 크기·방", icon:"📐"},
   {key:"safety", label:"안전·동네", icon:"🛡️"}
 ];
@@ -318,7 +318,7 @@ const GROUPS=[
     {lab:"배정 초등", get:h=>h.es+" ("+h.esScore+"점)", best:3},
     {lab:"중학교", get:h=>h.ms, best:null},
     {lab:"고등학교", get:h=>h.hs, best:null},
-    {lab:"통학", get:h=>h.walkTxt, best:2}
+    {lab:"등교(초등)", get:h=>h.walkTxt, best:2}
   ]},
   {name:"💵 비용", rows:[
     {lab:"보증금", get:h=>h.deposit, best:null},
@@ -331,9 +331,9 @@ const GROUPS=[
     {lab:"주차", get:h=>h.parking, best:null},
     {lab:"리스기간", get:h=>h.lease, best:null}
   ]},
-  {name:"📍 동네·통근", rows:[
+  {name:"📍 동네·출근", rows:[
     {lab:"지역·특징", get:h=>h.nbhd, best:null},
-    {lab:"통근(추정)", get:h=>h.commuteTxt, best:0}
+    {lab:"출근길(MedStar 병원)", get:h=>h.commuteTxt, best:0}
   ]}
 ];
 function renderTable(){
