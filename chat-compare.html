@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Bethesda 최종 4곳 비교</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--bg:#F2F5F3;--card:#FFF;--ink:#1B2A23;--sub:#5C6E64;--line:#E3EAE5;--green:#2F6B4F;--green-bg:#E7F2EC;--gold:#A8770E;--gold-bg:#FBF3DA;--best:#1F7A64;--best-bg:#E4F3EE;--heart:#E8465A;--radius:14px}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;background:var(--bg);color:var(--ink);font-size:15px;line-height:1.5;padding-bottom:70px}
+.wrap{max-width:760px;margin:0 auto;padding:0 12px}
+header{position:sticky;top:0;z-index:20;background:rgba(242,245,243,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.hd{max-width:760px;margin:0 auto;padding:11px 14px 7px;display:flex;align-items:center;gap:8px}
+.hd h1{font-size:18px;font-weight:800;letter-spacing:-.02em}
+.hd .sp{flex:1}
+.iconbtn{border:1px solid var(--line);background:var(--card);border-radius:11px;padding:7px 11px;font-size:12.5px;font-weight:700;color:var(--green);cursor:pointer}
+.nav{max-width:760px;margin:0 auto;display:flex;gap:5px;padding:0 12px 8px;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav button{flex:none;padding:7px 13px;border-radius:11px;font-size:13px;font-weight:700;color:var(--sub);background:transparent;border:1px solid var(--line);cursor:pointer;white-space:nowrap}
+.nav button.on{background:var(--green);color:#fff;border-color:var(--green)}
+.badges{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.badge{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;border-left:4px solid var(--best)}
+.badge .t{font-size:11px;color:var(--sub);font-weight:700}
+.badge .v{font-size:14px;font-weight:800;margin-top:2px}
+.badge .n{font-size:11.5px;color:var(--best);font-weight:700}
+section{display:none;margin:10px 0 4px}
+section.on{display:block}
+h2.sec{font-size:15px;font-weight:800;margin:6px 2px 8px}
+.note{font-size:11.5px;color:var(--sub);margin:4px 2px 12px}
+.tablewrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:12.5px}
+th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{position:sticky;top:0;background:#EEF3F0;font-size:12px;font-weight:800;z-index:2}
+tbody th{position:sticky;left:0;background:#F7FAF8;font-weight:700;color:var(--sub);z-index:1;white-space:nowrap;font-size:11.5px}
+td.best{background:var(--best-bg);color:var(--best);font-weight:800}
+td .zi{font-size:10.5px;color:var(--sub);font-weight:600}
+.colhead{font-weight:800}.colhead small{display:block;font-size:10.5px;color:var(--sub);font-weight:600}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:14px;margin:10px 0}
+.costrow{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:14px}
+.costrow .nm{flex:1;font-weight:700}
+.costrow .amt{font-weight:800;font-size:16px}
+.costrow.best .amt{color:var(--best)}
+.slider{width:100%;margin:6px 0}
+.util{display:flex;align-items:center;gap:10px;margin:8px 0 4px}
+.util b{font-size:20px;color:var(--green);min-width:74px;text-align:right}
+.pettog{display:inline-flex;align-items:center;gap:5px;font-size:11.5px;color:var(--sub);margin-left:6px}
+.chk{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.chk label{font-size:12px;background:#EEF3F0;border-radius:8px;padding:5px 9px;cursor:pointer;user-select:none}
+.chk input{margin-right:4px}
+.wrow{display:flex;align-items:center;gap:8px;margin:9px 0}
+.wrow .wl{flex:1;font-size:13.5px;font-weight:700}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:9px;overflow:hidden}
+.seg button{width:30px;height:30px;border:none;background:#fff;font-size:12.5px;font-weight:700;color:var(--sub);cursor:pointer;border-left:1px solid var(--line)}
+.seg button:first-child{border-left:none}
+.seg button.on{background:var(--green);color:#fff}
+.rankcard{display:flex;align-items:center;gap:12px;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:11px 13px;margin:8px 0}
+.rankcard .rk{font-size:20px;font-weight:800;color:var(--sub);min-width:26px}
+.rankcard.top{border:2px solid var(--best)}
+.rankcard.top .rk{color:var(--best)}
+.rankcard .nm{flex:1;font-weight:800;font-size:14.5px}
+.rankcard .sc{font-weight:800;font-size:17px;color:var(--green)}
+.bar{height:7px;background:#EEF3F0;border-radius:4px;overflow:hidden;margin-top:5px}
+.bar span{display:block;height:100%;background:var(--best)}
+.scorehome{border:1px solid var(--line);border-radius:12px;padding:11px 12px;margin:9px 0;background:var(--card)}
+.scorehome h3{font-size:14px;font-weight:800;margin-bottom:6px}
+.dcard{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin:11px 0;overflow:hidden;border-top:5px solid var(--tc,#3D6B9E)}
+.dhead{padding:13px 14px 10px}
+.dhead .nm{font-size:16px;font-weight:800}
+.dhead .ad{font-size:12px;color:var(--sub);margin-top:1px}
+.dhead .pr{font-size:20px;font-weight:800;color:var(--green);margin-top:6px}
+.dhead .pr small{font-size:12px;color:var(--sub);font-weight:600}
+.spec{display:flex;flex-wrap:wrap;gap:5px;padding:0 14px 10px}
+.spec .s{font-size:11.5px;background:#EEF3F0;border-radius:7px;padding:3px 8px;font-weight:600}
+.pc{padding:0 14px 8px;font-size:12.5px}
+.pc .p{color:var(--best)}.pc .c{color:#B0603A}
+.pc ul{margin:3px 0 8px 16px}
+.acts{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;padding:10px 14px 14px}
+.act{display:flex;flex-direction:column;align-items:center;gap:3px;background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 3px;font-size:11.5px;font-weight:700;color:var(--ink);text-decoration:none;text-align:center}
+.act .ic{font-size:17px}
+.act:active{background:var(--green-bg)}
+dialog{border:none;border-radius:16px;padding:0;max-width:560px;width:calc(100% - 32px)}
+dialog::backdrop{background:rgba(27,42,35,.45)}
+.dlg{padding:18px 16px}.dlg h2{font-size:16px;font-weight:800;margin-bottom:4px}.dlg p{font-size:12.5px;color:var(--sub);margin-bottom:10px}
+.dlg textarea{width:100%;height:84px;font-size:12px;font-family:ui-monospace,monospace;border:1px solid var(--line);border-radius:10px;padding:8px}
+.dlg .btns{display:flex;gap:8px;margin-top:10px}.dlg .btns button{flex:1;padding:10px;border-radius:10px;border:1px solid var(--line);background:#fff;font-size:13px;font-weight:800;cursor:pointer}.dlg .btns .pri{background:var(--green);border-color:var(--green);color:#fff}
+.dlg .close{width:100%;margin-top:12px;padding:10px;border-radius:10px;border:none;background:#EEF2EF;font-weight:800;cursor:pointer;color:var(--sub)}
+#toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:#fff;font-size:13px;font-weight:700;padding:9px 16px;border-radius:999px;opacity:0;transition:.25s;pointer-events:none;z-index:50}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.partner{font-size:11.5px;color:var(--best);font-weight:700;margin:4px 2px}
+</style></head>
+<body>
+<header>
+  <div class="hd"><h1>🏡 최종 4곳 비교</h1><div class="sp"></div><button class="iconbtn" onclick="openShare()">📤 점수공유</button></div>
+  <div class="nav" id="nav">
+    <button class="on" data-v="table" onclick="setView('table',this)">📊 비교표</button>
+    <button data-v="cost" onclick="setView('cost',this)">💵 월비용</button>
+    <button data-v="score" onclick="setView('score',this)">🏆 점수</button>
+    <button data-v="detail" onclick="setView('detail',this)">🏠 집별상세</button>
+  </div>
+</header>
+<div class="wrap">
+  <div class="badges" id="badges"></div>
+  <section class="on" id="v-table">
+    <h2 class="sec">항목별 비교 <span style="font-size:11.5px;color:var(--best)">· 초록칸 = 그 항목 최고</span></h2>
+    <div class="note">←→ 좌우로 밀어 4집을 비교하세요. 임대료·면적·학교점수 등 각 항목에서 가장 좋은 칸을 초록으로 표시했어요. (Rent Zestimate=Zillow 임대 추정가, 예상매매가=Zestimate 참고용)</div>
+    <div class="tablewrap"><table id="ctable"></table></div>
+  </section>
+  <section id="v-cost">
+    <h2 class="sec">총 월 예상비용</h2>
+    <div class="note">임대료는 확정값, <b>유틸리티는 추정</b>입니다(지역 평균 가정, 실제와 다를 수 있음 — 면적 큰 집일수록 더 나올 수 있어요). 아래 슬라이더로 유틸리티 가정을 바꾸면 4집이 같은 기준으로 다시 계산됩니다. 반려동물 월비용은 리스팅에 표기된 곳만 켤 수 있어요.</div>
+    <div class="card">
+      <div class="util">유틸리티 추정/월 <input class="slider" id="util" type="range" min="150" max="600" step="25" value="300" oninput="renderCost()"> <b id="utilv">$300</b></div>
+      <div id="petlist" class="chk"></div>
+    </div>
+    <div id="costlist"></div>
+  </section>
+  <section id="v-score">
+    <h2 class="sec">부부 가중치 점수 (의사결정)</h2>
+    <div class="note">① <b>우리가 중요하게 보는 정도</b>(가중치)를 1~5로 정하고, ② 집마다 항목 점수를 1~5로 주면 <b>가중 합산 순위</b>가 나옵니다. 초기값은 데이터 기반 추천이라 그대로 둬도 되고 자유롭게 바꿔도 돼요. 배우자와 각자 매긴 뒤 📤로 합치면 평균으로 합산됩니다.</div>
+    <div class="card"><b style="font-size:13.5px">1) 가중치 — 무엇을 얼마나 중요하게?</b><div id="weights" style="margin-top:8px"></div></div>
+    <div class="partner" id="partnerNote"></div>
+    <h2 class="sec" style="margin-top:14px">🏆 현재 순위</h2>
+    <div id="ranking"></div>
+    <div class="card"><b style="font-size:13.5px">2) 집별 점수 매기기</b><div id="scorehomes" style="margin-top:6px"></div></div>
+  </section>
+  <section id="v-detail"><h2 class="sec">집별 상세</h2><div id="details"></div></section>
+  <p style="text-align:center;font-size:11px;color:var(--sub);margin:18px 0 8px">데이터: 각 집 Zillow 상세페이지(2026-07-05 기준) · 학교점수 GreatSchools · 통근 MedStar Washington Hospital Center · 유틸리티/총비용은 추정</p>
+</div>
+<dialog id="shareDlg"><div class="dlg"><h2>📤 점수 공유·합치기</h2><p>① [내 점수 복사]로 코드를 카톡 전송 → ② 배우자는 코드를 붙여넣고 [배우자 점수 합치기]. 두 사람 점수의 평균으로 순위가 다시 계산돼요.</p>
+<textarea id="shareTa" placeholder="배우자에게 받은 코드를 여기 붙여넣으세요"></textarea>
+<div class="btns"><button class="pri" onclick="exportState()">내 점수 복사</button><button onclick="importState()">배우자 점수 합치기</button></div>
+<button class="close" onclick="document.getElementById('shareDlg').close()">닫기</button></div></dialog>
+<div id="toast"></div>
+<script>
+const HOSPITAL="MedStar Washington Hospital Center, 110 Irving St NW, Washington, DC 20010";
+const HOMES=[{"id": "h1", "name": "5042 Bradley Blvd", "city": "Chevy Chase", "zip": "20815", "full": "5042 Bradley Blvd, Chevy Chase, MD 20815", "type": "타운하우스", "typek": "th", "rent": 3995, "rentZ": 3984, "beds": 3, "baths": 3, "sqft": 1200, "year": 1977, "avail": "2026-08-01", "lease": "문의(Contact)", "es": "Westbrook", "esScore": 9, "esDist": 1.3, "ms": "Westland", "msScore": 10, "hs": "B-CC", "hsScore": 8, "cool": "중앙냉방", "heat": "강제송풍(전기)", "laundry": "세대내", "parking": "진입로 2면", "floor": "원목", "appl": "세탁·건조기", "pets": "정보 확인 필요", "petFee": 0, "deposit": "$4,300 + 신청 $45 + 1개월 선납", "util": "세입자: 전기 등 / 집주인: 조합비", "hoa": "소유자 부담(임대료 외)", "hoaM": 0, "days": 28, "zest": 845600, "esAddr": "5110 Allan Ter, Bethesda, MD 20816", "esLink": "https://www.greatschools.org/maryland/bethesda/977-Westbrook-Elementary-School/", "zillow": "https://www.zillow.com/homedetails/5042-Bradley-Blvd-Chevy-Chase-MD-20815/37192598_zpid/", "nbhd": "Chevy Chase·다운타운 인근 최상급 부촌, 매우 안전", "pros": ["4곳 중 가장 저렴($3,995)", "중학교 Westland 10점", "Chevy Chase 최상급 안전·다운타운 도보권"], "cons": ["가장 좁음(1,200sqft)", "준공 1977", "고교 B-CC 8점(4곳 중 최저)", "초등 다소 거리(1.3mi)"]}, {"id": "h2", "name": "7919 Jensen Pl", "city": "Bethesda", "zip": "20817", "full": "7919 Jensen Pl, Bethesda, MD 20817", "type": "타운하우스", "typek": "th", "rent": 4100, "rentZ": 4021, "beds": 4, "baths": 4, "sqft": 1452, "year": null, "avail": "2026-06-21", "lease": "1년(24개월 옵션)", "es": "Bannockburn", "esScore": 9, "esDist": 1.2, "ms": "Pyle", "msScore": 10, "hs": "Whitman", "hsScore": 9, "cool": "중앙냉방", "heat": "정보 없음", "laundry": "세대내", "parking": "노외주차", "floor": "원목", "appl": "세탁·건조기", "pets": "최대 2마리 케이스별(펫 $250+월$25/마리)", "petFee": 25, "deposit": "1개월(신용 720+, 소득 3.5x)", "util": "세입자 전 유틸(가스·전기·수도·인터넷)+잔디", "hoa": "임대료에 포함", "hoaM": 0, "days": 37, "zest": 892500, "esAddr": "6520 Dalroy Ln, Bethesda, MD 20817", "esLink": "https://www.greatschools.org/maryland/bethesda/856-Bannockburn-Elementary-School/", "zillow": "https://www.zillow.com/homedetails/7919-Jensen-Pl-Bethesda-MD-20817/37197332_zpid/", "nbhd": "Bannockburn 최상급 부촌, 매우 안전", "pros": ["방4·욕실4로 가장 많음", "Pyle 10·Whitman 9 명문 학군", "리스 1년 명확", "HOA 임대료 포함"], "cons": ["입주 6/21로 이른 편(8월 필요 대비 선점 우려)", "유틸+잔디까지 세입자 부담", "면적 중간(1,452)"]}, {"id": "h3", "name": "10115 Galsworthy Pl", "city": "Bethesda", "zip": "20817", "full": "10115 Galsworthy Pl, Bethesda, MD 20817", "type": "타운하우스", "typek": "th", "rent": 4400, "rentZ": 4071, "beds": 3, "baths": 3, "sqft": 1748, "year": null, "avail": "2026-07-14", "lease": "1년", "es": "Seven Locks", "esScore": 10, "esDist": 0.9, "ms": "Cabin John", "msScore": 9, "hs": "Churchill", "hsScore": 9, "cool": "중앙냉방", "heat": "강제송풍", "laundry": "세대내", "parking": "부착 차고", "floor": "원목+타일", "appl": "풀옵션(식기세척·냉장·오븐·전자레인지·세탁·건조·냉동)", "pets": "고양이·소형견 OK", "petFee": 0, "deposit": "개별 확인", "util": "세입자 유틸 + 렌터보험 필수", "hoa": "—", "hoaM": 0, "days": 28, "zest": 852000, "esAddr": "9500 Seven Locks Rd, Bethesda, MD 20817", "esLink": "https://www.greatschools.org/maryland/bethesda/954-Seven-Locks-Elementary-School/", "zillow": "https://www.zillow.com/homedetails/10115-Galsworthy-Pl-Bethesda-MD-20817/37265899_zpid/", "nbhd": "West Bethesda·Churchill 학군, 부촌·매우 안전, Cabin John Park 인근", "pros": ["유일한 초등 10점(Seven Locks·0.9mi)", "부착 차고", "풀옵션 가전", "리스 1년", "Churchill 명문고"], "cons": ["4곳 중 가장 비쌈($4,400)", "방 3개"]}, {"id": "h4", "name": "6400 Wilmett Rd", "city": "Bethesda", "zip": "20817", "full": "6400 Wilmett Rd, Bethesda, MD 20817", "type": "단독주택", "typek": "house", "rent": 4200, "rentZ": 5132, "beds": 4, "baths": 3, "sqft": 2066, "year": 1954, "avail": "2026-08-01", "lease": "문의(Contact)", "es": "Wyngate", "esScore": 9, "esDist": 0.1, "ms": "North Bethesda", "msScore": 9, "hs": "Walter Johnson", "hsScore": 9, "cool": "중앙냉방+실링팬", "heat": "강제송풍", "laundry": "세대내", "parking": "노외주차", "floor": "원목", "appl": "풀옵션(식기세척·냉장·오븐·전자레인지·세탁·건조)", "pets": "개 OK·고양이 불가(펫 $300+월$45)", "petFee": 45, "deposit": "개별 확인", "util": "세입자(추정)", "hoa": "—", "hoaM": 0, "days": 16, "zest": 989800, "esAddr": "9300 Wadsworth Dr, Bethesda, MD 20817", "esLink": "https://www.greatschools.org/maryland/bethesda/990-Wyngate-Elementary-School/", "zillow": "https://www.zillow.com/homedetails/6400-Wilmett-Rd-Bethesda-MD-20817/37177607_zpid/", "nbhd": "Wyngate, 매우 안전, NIH 인근 / Wyngate 초등 도보권", "pros": ["유일한 단독주택", "가장 넓음(2,066sqft)", "초등 도보 0.1mi(사실상 옆)", "예상임대가($5,132)보다 싸 가성비 우수", "등록 16일(신규)"], "cons": ["준공 1954(가장 오래됨)", "고양이 불가", "리스 조건 문의 필요"]}];
+const LSKEY="bethesda_compare_v1";
+const TYPEC={th:"#3D6B9E",house:"#8A5A2B",condo:"#6B4E8E"};
+const CRIT=[{k:"school",l:"학군(초·중·고)"},{k:"size",l:"크기·방 개수"},{k:"commute",l:"통근·통학 접근성"},{k:"price",l:"가격(임대료)"},{k:"feel",l:"상태·느낌"}];
+let view="table";
+function $(id){return document.getElementById(id)}
+function fmt(n){return "$"+n.toLocaleString()}
+function gmapsSearch(q){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q)}
+function gmapsDir(o,d,m){return "https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(o)+"&destination="+encodeURIComponent(d)+"&travelmode="+m}
+
+// ---- seed default ratings from data ----
+function seedRatings(){
+  const rents=HOMES.map(h=>h.rent), sqfts=HOMES.map(h=>h.sqft);
+  const rmin=Math.min(...rents),rmax=Math.max(...rents),smin=Math.min(...sqfts),smax=Math.max(...sqfts);
+  const r={};
+  HOMES.forEach(h=>{
+    const price=Math.round(1+4*(rmax-h.rent)/(rmax-rmin||1));
+    const size=Math.round(1+4*(h.sqft-smin)/(smax-smin||1));
+    const schAvg=(h.esScore+h.msScore+h.hsScore)/3;
+    const school=schAvg>=9.3?5:(schAvg>=9?4:3);
+    const commute=h.esDist<=0.3?5:(h.esDist<=1.0?4:3);
+    r[h.id]={school,size,commute,price,feel:3};
+  });
+  return r;
+}
+function load(){try{const s=JSON.parse(localStorage.getItem(LSKEY));if(s&&s.me)return s}catch(e){}
+  return {weights:{school:4,size:3,commute:4,price:3,feel:3}, me:seedRatings(), partner:null};}
+let S=load();
+function save(){try{localStorage.setItem(LSKEY,JSON.stringify(S))}catch(e){}}
+function eff(hid,k){const m=S.me[hid][k];if(S.partner&&S.partner[hid]&&S.partner[hid][k]!=null)return (m+S.partner[hid][k])/2;return m;}
+function scoreOf(h){let sw=0,tot=0;CRIT.forEach(c=>{const w=S.weights[c.k]||3;sw+=w;tot+=w*eff(h.id,c.k)});return Math.round(100*tot/(sw*5));}
+
+function setView(v,btn){view=v;document.querySelectorAll('.nav button').forEach(b=>b.classList.toggle('on',b===btn));
+  document.querySelectorAll('section').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));
+  if(v==='score'){renderWeights();renderScoreHomes();renderRanking()}
+  if(v==='cost')renderCost(); if(v==='detail')renderDetails(); if(v==='table')renderTable();
+  window.scrollTo(0,0);}
+
+// ---- badges ----
+function renderBadges(){
+  const cheap=HOMES.reduce((a,b)=>b.rent<a.rent?b:a);
+  const big=HOMES.reduce((a,b)=>b.sqft>a.sqft?b:a);
+  const sch=HOMES.reduce((a,b)=>b.esScore>a.esScore?b:a);
+  const near=HOMES.reduce((a,b)=>b.esDist<a.esDist?b:a);
+  const val=HOMES.reduce((a,b)=>(b.rentZ-b.rent)>(a.rentZ-a.rent)?b:a);
+  const items=[["가장 저렴",cheap.name,fmt(cheap.rent)],["가장 넓음",big.name,big.sqft.toLocaleString()+" sqft"],
+    ["최고 학군",sch.name,sch.es+" "+sch.esScore+"점"],["초등 최근접",near.name,near.esDist+" mi"],
+    ["가성비(추정임대가 대비)",val.name,"−"+fmt(val.rentZ-val.rent)]];
+  $("badges").innerHTML=items.map(x=>`<div class="badge"><div class="t">${x[0]}</div><div class="v">${x[1]}</div><div class="n">${x[2]}</div></div>`).join("");
+}
+// ---- table ----
+function renderTable(){
+  const H=HOMES;
+  const row=(label,vals,bestIdx,zi)=>{
+    return `<tr><th>${label}</th>`+vals.map((v,i)=>`<td class="${bestIdx&&bestIdx.includes(i)?'best':''}">${v}${zi&&zi[i]?'<div class="zi">'+zi[i]+'</div>':''}</td>`).join("")+`</tr>`;
+  };
+  const idxMin=f=>{const a=H.map(f);const m=Math.min(...a.filter(x=>x!=null));return a.map((x,i)=>x===m?i:-1).filter(i=>i>=0)};
+  const idxMax=f=>{const a=H.map(f);const m=Math.max(...a.filter(x=>x!=null));return a.map((x,i)=>x===m?i:-1).filter(i=>i>=0)};
+  let h=`<thead><tr><th>항목</th>`+H.map(x=>`<th class="colhead">${x.name}<small>${x.city} ${x.zip}</small></th>`).join("")+`</tr></thead><tbody>`;
+  h+=row("임대료/월",H.map(x=>fmt(x.rent)),idxMin(x=>x.rent),H.map(x=>"Zest "+fmt(x.rentZ)));
+  h+=row("유형",H.map(x=>x.type));
+  h+=row("침실",H.map(x=>x.beds+"개"),idxMax(x=>x.beds));
+  h+=row("욕실",H.map(x=>x.baths+"개"),idxMax(x=>x.baths));
+  h+=row("면적",H.map(x=>x.sqft.toLocaleString()+" sqft"),idxMax(x=>x.sqft));
+  h+=row("준공연도",H.map(x=>x.year||"—"),idxMax(x=>x.year||0));
+  h+=row("입주가능",H.map(x=>x.avail));
+  h+=row("리스",H.map(x=>x.lease));
+  h+=row("배정 초등",H.map(x=>x.es+" ("+x.esScore+")"),idxMax(x=>x.esScore),H.map(x=>x.esDist+" mi"));
+  h+=row("초등 거리",H.map(x=>x.esDist+" mi"),idxMin(x=>x.esDist));
+  h+=row("중학교",H.map(x=>x.ms+" ("+x.msScore+")"),idxMax(x=>x.msScore));
+  h+=row("고등학교",H.map(x=>x.hs+" ("+x.hsScore+")"),idxMax(x=>x.hsScore));
+  h+=row("냉방",H.map(x=>x.cool));
+  h+=row("난방",H.map(x=>x.heat));
+  h+=row("세탁",H.map(x=>x.laundry));
+  h+=row("주차",H.map(x=>x.parking));
+  h+=row("바닥",H.map(x=>x.floor));
+  h+=row("가전",H.map(x=>x.appl));
+  h+=row("반려동물",H.map(x=>x.pets));
+  h+=row("보증금",H.map(x=>x.deposit));
+  h+=row("유틸리티",H.map(x=>x.util));
+  h+=row("HOA",H.map(x=>x.hoa));
+  h+=row("Zillow 등록",H.map(x=>x.days+"일"),idxMin(x=>x.days));
+  h+=row("예상매매가",H.map(x=>fmt(x.zest)));
+  h+=`</tbody>`;
+  $("ctable").innerHTML=h;
+}
+// ---- cost ----
+function renderCost(){
+  const util=+$("util").value; $("utilv").textContent=fmt(util);
+  $("petlist").innerHTML=HOMES.filter(h=>h.petFee>0).map(h=>`<label><input type="checkbox" id="pet-${h.id}" onchange="renderCost()">${h.name.split(' ')[0]} 반려동물(+${fmt(h.petFee)}/월)</label>`).join("")||'<span style="font-size:11.5px;color:var(--sub)">반려동물 월비용 표기된 집 없음</span>';
+  const totals=HOMES.map(h=>{const pet=(h.petFee>0&&$("pet-"+h.id)&&$("pet-"+h.id).checked)?h.petFee:0;return {h,total:h.rent+util+pet+h.hoaM}});
+  const min=Math.min(...totals.map(t=>t.total));
+  $("costlist").innerHTML=totals.map(t=>`<div class="costrow ${t.total===min?'best':''}"><span class="nm">${t.h.name}<div style="font-size:11px;color:var(--sub);font-weight:600">임대 ${fmt(t.h.rent)} + 유틸 ${fmt(util)}${(t.total-t.h.rent-util)?' + 펫 '+fmt(t.total-t.h.rent-util):''}</div></span><span class="amt">${fmt(t.total)}</span></div>`).join("");
+}
+// ---- score ----
+function renderWeights(){
+  $("weights").innerHTML=CRIT.map(c=>`<div class="wrow"><span class="wl">${c.l}</span><span class="seg">${[1,2,3,4,5].map(n=>`<button class="${(S.weights[c.k]||3)===n?'on':''}" onclick="setW('${c.k}',${n})">${n}</button>`).join("")}</span></div>`).join("");
+}
+function setW(k,n){S.weights[k]=n;save();renderWeights();renderRanking()}
+function renderScoreHomes(){
+  $("scorehomes").innerHTML=HOMES.map(h=>`<div class="scorehome"><h3>${h.name}</h3>${CRIT.map(c=>`<div class="wrow"><span class="wl" style="font-size:12.5px">${c.l}</span><span class="seg">${[1,2,3,4,5].map(n=>`<button class="${S.me[h.id][c.k]===n?'on':''}" onclick="setR('${h.id}','${c.k}',${n})">${n}</button>`).join("")}</span></div>`).join("")}</div>`).join("");
+}
+function setR(hid,k,n){S.me[hid][k]=n;save();renderScoreHomes();renderRanking()}
+function renderRanking(){
+  const ranked=[...HOMES].map(h=>({h,s:scoreOf(h)})).sort((a,b)=>b.s-a.s);
+  $("partnerNote").textContent=S.partner?"✅ 배우자 점수 합쳐진 상태(평균). 순위는 두 사람 평균 기준입니다.":"";
+  $("ranking").innerHTML=ranked.map((r,i)=>`<div class="rankcard ${i===0?'top':''}"><span class="rk">${i+1}</span><div class="nm">${r.h.name}<div class="bar"><span style="width:${r.s}%"></span></div></div><span class="sc">${r.s}</span></div>`).join("");
+}
+// ---- detail ----
+function renderDetails(){
+  $("details").innerHTML=HOMES.map(h=>{
+    const walk=gmapsDir(h.full,h.esAddr,"walking"),drive=gmapsDir(h.full,h.esAddr,"driving");
+    return `<div class="dcard" style="--tc:${TYPEC[h.typek]}">
+    <div class="dhead"><div class="nm">${h.name}</div><div class="ad">${h.full}</div><div class="pr">${fmt(h.rent)}<small>/월 · ${h.type} · ${h.beds}bd/${h.baths}ba · ${h.sqft.toLocaleString()}sqft</small></div></div>
+    <div class="spec"><span class="s">🏫 ${h.es} ${h.esScore}점(${h.esDist}mi)</span><span class="s">중 ${h.ms} ${h.msScore}</span><span class="s">고 ${h.hs} ${h.hsScore}</span><span class="s">입주 ${h.avail}</span><span class="s">리스 ${h.lease}</span><span class="s">주차 ${h.parking}</span></div>
+    <div class="pc"><div class="p"><b>장점</b><ul>${h.pros.map(x=>'<li>'+x+'</li>').join("")}</ul></div><div class="c"><b>단점·유의</b><ul>${h.cons.map(x=>'<li>'+x+'</li>').join("")}</ul></div><div style="color:var(--sub);font-size:12px">📍 ${h.nbhd}</div></div>
+    <div class="acts">
+      <a class="act" target="_blank" rel="noopener" href="${h.zillow}"><span class="ic">🏠</span>Zillow·사진</a>
+      <a class="act" target="_blank" rel="noopener" href="${gmapsSearch(h.full)}"><span class="ic">📍</span>지도</a>
+      <a class="act" target="_blank" rel="noopener" href="${h.esLink}"><span class="ic">🏫</span>학교</a>
+      <a class="act" target="_blank" rel="noopener" href="${walk}"><span class="ic">🚶</span>등교 도보</a>
+      <a class="act" target="_blank" rel="noopener" href="${drive}"><span class="ic">🚌</span>등교 차량</a>
+      <a class="act" target="_blank" rel="noopener" href="${gmapsDir(h.full,HOSPITAL,'driving')}"><span class="ic">🚗</span>MedStar 통근</a>
+    </div></div>`;
+  }).join("");
+}
+// ---- share ----
+function openShare(){$("shareTa").value="";$("shareDlg").showModal()}
+function exportState(){const code=JSON.stringify({weights:S.weights,ratings:S.me});const ta=$("shareTa");ta.value=code;ta.select();
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(code).then(()=>toast("복사됨! 카톡에 붙여넣기"),()=>{document.execCommand("copy");toast("복사됨!")})}else{document.execCommand("copy");toast("복사됨!")}}
+function importState(){try{const inc=JSON.parse($("shareTa").value.trim());if(inc.ratings){S.partner=inc.ratings;save();toast("배우자 점수 합침(평균)")}
+  document.getElementById("shareDlg").close();renderRanking();renderWeights()}catch(e){toast("코드 형식 오류")}}
+function toast(m){const t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(t._x);t._x=setTimeout(()=>t.classList.remove("show"),1600)}
+renderBadges();renderTable();
+</script></body></html>
