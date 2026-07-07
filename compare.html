@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>우리집 최종 4곳 비교</title>
+<title>우리집 최종 5곳 비교</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
 <style>
 :root{
@@ -60,7 +60,7 @@ header{position:sticky;top:0;z-index:20;background:rgba(242,245,243,.95);backdro
 /* ===== 비교표 ===== */
 .scrollhint{font-size:11px;color:var(--sub);padding:0 15px 6px;text-align:right}
 .tablebox{overflow-x:auto;-webkit-overflow-scrolling:touch}
-table.cmp{border-collapse:separate;border-spacing:0;width:100%;min-width:560px}
+table.cmp{border-collapse:separate;border-spacing:0;width:100%;min-width:680px}
 table.cmp th,table.cmp td{padding:8px 8px;font-size:12px;vertical-align:top;border-bottom:1px solid var(--line);text-align:center}
 table.cmp thead th{position:sticky;top:0;background:#F0F4F1;z-index:3}
 table.cmp .colhead{font-size:12px;font-weight:800;line-height:1.25}
@@ -83,6 +83,7 @@ td .bstar{color:var(--best-line);font-size:10px;font-weight:800;display:block;ma
 .pl .li .ic{flex:none;font-size:12px;margin-top:1px}
 .pro .ic{color:#2F6B4F}
 .con .ic{color:#B5504A}
+.pcard .note{background:var(--warn-bg);border:1px solid #EAD9A8;color:var(--warn);font-size:11.5px;font-weight:700;border-radius:9px;padding:7px 9px;margin:2px 0 9px;line-height:1.45}
 .pcard .divider{height:1px;background:var(--line);margin:9px 0}
 .acts{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:11px}
 .act{display:flex;flex-direction:column;align-items:center;gap:3px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:8px 2px;font-size:10.5px;font-weight:700;color:var(--ink);text-decoration:none;text-align:center;line-height:1.15}
@@ -95,7 +96,7 @@ td .bstar{color:var(--best-line);font-size:10px;font-weight:800;display:block;ma
 <body>
 <header>
   <div class="hd">
-    <h1>🏡 우리집 최종 4곳 비교</h1>
+    <h1>🏡 우리집 최종 5곳 비교</h1>
     <div class="cnt">중요도를 조절하면 추천 순위가 바뀌어요 · 조사기준 2026-07-05</div>
   </div>
 </header>
@@ -207,8 +208,24 @@ const HOUSES=[
    commuteMin:33, commuteTxt:"차량 약 33분(추정)", walkTxt:"—",
    busZone:"🚌 버스 대상(추정) · Seven Locks 초등 약 1~1.5mi(1mi 초과)", safety:92,
    nbhd:"West Bethesda · Churchill 학군 · Cabin John Park 인근 · 부촌·안전",
-   pros:["초등 10점 — 4곳 중 유일 (Seven Locks) · Churchill 학군","부착 차고 · In-Unit 세탁","고양이·소형견 모두 가능","Cabin John Park 인근 · 조용한 부촌"],
-   cons:["임대료 가장 높음 ($4,400)","방 3개 (타운하우스)","MedStar 통근 가장 멂(추정)","세입자 유틸 + 렌터보험 필수"]}
+   pros:["초등 10점 — 유일 (Seven Locks) · Churchill 학군","부착 차고 · In-Unit 세탁","고양이·소형견 모두 가능","Cabin John Park 인근 · 조용한 부촌"],
+   cons:["임대료 가장 높음 ($4,400)","방 3개 (타운하우스)","MedStar 통근 가장 멂(추정)","세입자 유틸 + 렌터보험 필수"]},
+
+  {id:"massave", short:"5518 Massachusetts Ave", area:"Wood Acres", zpid:"37181604",
+   slug:"5518-Massachusetts-Ave-Bethesda-MD-20816", fullAddr:"5518 Massachusetts Ave, Bethesda, MD 20816",
+   type:"단독주택(메인층 임대)", beds:3, baths:"2", sqft:1570, rent:"$2,875*", rentNum:2875,
+   movein:"개별 확인", lease:"개별 확인(12개월 문의)", deposit:"개별 확인",
+   laundry:"확인 필요", parking:"넉넉(off-street)", util:"전부 포함 (전기·가스·수도·냉난방·HVAC정비·조경·주차·세금·보험)",
+   pets:"확인 필요", hoa:"—",
+   es:"Wood Acres", esScore:9, ms:"Pyle", hs:"Whitman",
+   esAddr:"5800 Cromwell Dr, Bethesda, MD 20816",
+   esLink:"https://www.greatschools.org/maryland/bethesda/987-Wood-Acres-Elementary-School/",
+   commuteMin:20, commuteTxt:"차량 약 20분(추정)", walkTxt:"Wood Acres 초등 도보권(추정)",
+   busZone:"🚶 도보권(추정) · Wood Acres 초등 1mi 미만", safety:93,
+   nbhd:"Sumner·Wood Acres(20816): 부촌·매우 안전 · DC 경계 인접 · 대중교통·쇼핑 편리",
+   note:"집 전체가 아니라 위/메인층만 임대예요(주인이 지하 보유·사용, 세입자는 뒷마당 사용). 유틸리티는 전부 포함. 표시 임대료 $2,875*는 기존 기록 기준이라 현재가 확인이 필요합니다.",
+   pros:["유틸리티 전부 포함(전기·가스·수도·냉난방 등) → 실질 비용 최저","MedStar 통근 가장 가까운 편(약 20분 추정)","Wood Acres 초등 도보권(추정) · Whitman 명문 학군","표시 임대료가 4곳보다 낮음(유틸 포함 감안 시 더 저렴)"],
+   cons:["⚠️ 집 전체 아님 — 메인층만 임대, 주인이 지하 보유·사용(공유형)","현재 임대료·입주조건 확인 필요(실시간 조회 불가)","1953년 건축 · 방 3개(지하 미포함)","주인과 한 건물 공유라 프라이버시는 통집보다 낮음"]}
 ];
 
 /* ===== 점수 계산 ===== */
@@ -313,17 +330,17 @@ const IDX={bradley:0,jensen:1,wilmett:2,galsworthy:3};
 // best: 해당 행에서 초록 강조할 컬럼 인덱스(단일). null이면 강조 없음.
 const GROUPS=[
   {name:"💡 한눈에", rows:[
-    {lab:"임대료", get:h=>h.rent, best:0},
+    {lab:"임대료", get:h=>h.rent, num:h=>h.rentNum, dir:"min"},
     {lab:"방/욕실", get:h=>h.beds+" / "+h.baths, best:null},
-    {lab:"평수", get:h=>h.sqft.toLocaleString()+" sqft", best:2},
+    {lab:"평수", get:h=>h.sqft.toLocaleString()+" sqft", num:h=>h.sqft, dir:"max"},
     {lab:"주택형태", get:h=>h.type, best:null},
     {lab:"입주 가능", get:h=>h.movein, best:null}
   ]},
   {name:"🏫 학군", rows:[
-    {lab:"배정 초등", get:h=>h.es+" ("+h.esScore+"점)", best:3},
+    {lab:"배정 초등", get:h=>h.es+" ("+h.esScore+"점)", num:h=>h.esScore, dir:"max"},
     {lab:"중학교", get:h=>h.ms, best:null},
     {lab:"고등학교", get:h=>h.hs, best:null},
-    {lab:"등교(초등)", get:h=>h.walkTxt, best:2},
+    {lab:"등교(초등)", get:h=>h.walkTxt, hi:h=>/도보권/.test(h.walkTxt)},
     {lab:"스쿨버스", get:h=>h.busZone, best:null}
   ]},
   {name:"💵 비용", rows:[
@@ -339,19 +356,32 @@ const GROUPS=[
   ]},
   {name:"📍 동네·출근", rows:[
     {lab:"지역·특징", get:h=>h.nbhd, best:null},
-    {lab:"출근길(MedStar 병원)", get:h=>h.commuteTxt, best:0}
+    {lab:"출근길(MedStar 병원)", get:h=>h.commuteTxt, num:h=>h.commuteMin, dir:"min"}
   ]}
 ];
+function bestSet(r){
+  const set=new Set();
+  if(r.num&&r.dir){
+    const vals=HOUSES.map(r.num);
+    const t=r.dir==="min"?Math.min(...vals):Math.max(...vals);
+    HOUSES.forEach((h,i)=>{ if(Math.abs(r.num(h)-t)<1e-9) set.add(i); });
+  }else if(r.hi){
+    HOUSES.forEach((h,i)=>{ if(r.hi(h)) set.add(i); });
+  }else if(r.best!=null){ set.add(r.best); }
+  return set;
+}
 function renderTable(){
+  const span=HOUSES.length+1;
   let html='<thead><tr><th class="lab"></th>'+
     HOUSES.map(h=>`<th><div class="colhead">${h.short.split(" ").slice(0,2).join(" ")}<span class="hrent">${h.rent}</span><span class="hsc">${h.area} · ${h.es} ${h.esScore}점</span></div></th>`).join("")+
     '</tr></thead><tbody>';
   for(const g of GROUPS){
-    html+=`<tr class="grp"><td colspan="5">${g.name}</td></tr>`;
+    html+=`<tr class="grp"><td colspan="${span}">${g.name}</td></tr>`;
     for(const r of g.rows){
+      const bs=bestSet(r);
       html+=`<tr><td class="lab">${r.lab}</td>`+
         HOUSES.map((h,i)=>{
-          const isBest=r.best===i;
+          const isBest=bs.has(i);
           return `<td class="${isBest?'best':''}">${r.get(h)}${isBest?'<span class="bstar">▲ 유리</span>':''}</td>`;
         }).join("")+'</tr>';
     }
@@ -361,7 +391,7 @@ function renderTable(){
 }
 
 /* ===== 장단점 카드 ===== */
-const TYPECOLOR={"타운하우스":"#3D6B9E","단독주택":"#8A5A2B","주택(A-Frame)":"#8A5A2B"};
+const TYPECOLOR={"타운하우스":"#3D6B9E","단독주택":"#8A5A2B","주택(A-Frame)":"#8A5A2B","단독주택(메인층 임대)":"#6B4E8E"};
 function renderCards(){
   document.getElementById("cards").innerHTML=HOUSES.map(h=>{
     const col=TYPECOLOR[h.type]||"#5C6E64";
@@ -370,6 +400,7 @@ function renderCards(){
     return `<div class="pcard" style="border-left-color:${col}">
       <h3>${h.short} <span class="pr">${h.rent}</span></h3>
       <div class="sub">${h.type} · ${h.beds}bd/${h.baths}ba · ${h.sqft.toLocaleString()} sqft · ${h.area} · ${h.es} 초등 ${h.esScore}점 → ${h.hs}</div>
+      ${h.note?`<div class="note">⚠️ ${h.note}</div>`:""}
       <div class="pl pro">${pros}</div>
       <div class="divider"></div>
       <div class="pl con">${cons}</div>
