@@ -94,9 +94,7 @@
   </header>
 
   <div class="tabs" id="tabs">
-    <div class="tab on" data-g="all">전체 (10)</div>
-    <div class="tab" data-g="active">진행 후보 (7)</div>
-    <div class="tab" data-g="new">신규 ES9+ (3)</div>
+    <div class="tab on" data-g="active">진행 후보 (7)</div>
   </div>
 
   <div class="card">
@@ -157,15 +155,10 @@ const DATA = {
     {id:"jensen",name:"7919 Jensen Pl",address:"7919 Jensen Pl, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/7919-Jensen-Pl-Bethesda-MD-20817/37197332_zpid/",type:"타운하우스",beds:4,baths:3.5,sqft:1452,rent:4100,avail:"즉시",furnished:false,parking:"off-street parking",utilities:"세입자 전액+잔디/관리, HOA 월세포함",es:{name:"Bannockburn ES",score:9,dist:1.2},ms:{name:"Thomas W. Pyle MS",score:10},hs:{name:"Walt Whitman HS",score:9},commute:30,safety:88,foreign:"확인 필요(기존 지원자 있었음)",
      pros:["선호하는 타운하우스","Bannockburn9·Pyle10·Whitman9 명문라인","즉시 입주"],cons:["초등 1.2mi·스쿨버스","세입자가 모든 유틸리티+잔디/관리 부담","면적 최소 1,452sqft","기존 지원자 있어 백업 성격"],flag:"기존 지원자 존재 — 무산 시 연락(백업)"}
   ],
-  new:[
-    {id:"westlake14",name:"7470 Westlake Ter #14",address:"7470 Westlake Ter #14, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/7470-Westlake-Ter-14-Bethesda-MD-20817/37264191_zpid/",type:"타운하우스",beds:4,baths:3.5,sqft:2214,rent:3850,avail:"2026-08-01",furnished:false,parking:"단지 주차(게스트 포함)",utilities:"확인 필요",es:{name:"Ashburton ES",score:9,dist:1.4},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:37,safety:87,foreign:"미확인 — 집주인 직접(연락처 확보)",
-     pros:["선호하는 타운하우스","리스 1년 가능(확인)·반려동물 OK","가성비 $3,850·보증금 1개월","단지 수영장·테니스, 8/1 입주"],cons:["초등 1.4mi·스쿨버스","출근길 약 37분","외국인 지원 여부만 미확인"],flag:null},
-    {id:"westlake56",name:"7572 Westlake Ter #56",address:"7572 Westlake Ter #56, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/7572-Westlake-Ter-56-Bethesda-MD-20817/37264852_zpid/",type:"타운하우스",beds:4,baths:3.5,sqft:2428,rent:4000,avail:"즉시",furnished:false,parking:"단지 주차",utilities:"확인 필요",es:{name:"Ashburton ES",score:9,dist:1.4},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:37,safety:87,foreign:"미확인 — Compass 에이전트(연락처 확보)",
-     pros:["넓은 타운하우스 2,428sqft","반려동물 OK·단지 수영장·테니스","즉시 입주","Ashburton 9점 라인·7470과 같은 단지"],cons:["초등 1.4mi·스쿨버스","출근길 약 37분","리스 기간 미표기(문의 필요)","외국인 지원 여부 미확인"],flag:"리스 기간 미표기 — 문의 필요"},
-    {id:"bradleyhills",name:"(비공개) Bradley Hills",address:"(비공개 주소) Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/Bethesda-MD-20817/37179594_zpid/",type:"단독주택",beds:4,baths:3,sqft:1418,rent:3900,avail:"2026-07-30",furnished:false,parking:"off-street parking",utilities:"확인 필요",es:{name:"Bradley Hills ES",score:9,dist:0.4},ms:{name:"Thomas W. Pyle MS",score:10},hs:{name:"Walt Whitman HS",score:9},commute:30,safety:90,foreign:"미확인 — 집주인 직접(연락처 확보)",
-     pros:["Bradley Hills9·Pyle10·Whitman9 명문라인, 초등 도보권(0.4mi)","리스 1년 가능(확인)·개 OK","중앙냉방·인유닛 세탁·가성비 $3,900","7/30 입주"],cons:["Zillow 주소 비공개(정확 위치·지도 제한)","면적 최소 1,418sqft","외국인 지원 여부만 미확인"],flag:"주소 비공개 매물 — 정확 위치 확인 필요"}
-  ],
+  new:[],
   excluded:[
+    {a:"7470 Westlake Ter #14 · 7572 Westlake Ter #56, Bethesda 20817",r:"배정 초등 Ashburton ES가 과밀(초과밀) 학교라 제외(아내 판단). 타운하우스·리스 1년 가능했으나 스킵"},
+    {a:"(비공개 주소) Bethesda 20817 — Bradley Hills 학군",r:"Zillow 주소 비공개로 정확한 위치 확인 불가 — risk로 제외"},
     {a:"5042 Bradley Blvd, Chevy Chase 20815",r:"다른 지원자로 계약 확정 → Off market(오늘 확인)"},
     {a:"10113 Galsworthy Pl, Bethesda 20817",r:"집주인이 1년보다 2년 계약 선호 → 지원 거절(7/15). 리노베이션·우호적 리얼터였으나 무산"},
     {a:"10115 Galsworthy Pl, Bethesda 20817",r:"연락 두절·자동응답만 반복, 사람 연결 불가"},
@@ -182,7 +175,7 @@ const PRESETS = {
   space:{es:2,rent:2,commute:2,space:5,safety:3}
 };
 const KEYS=["es","rent","commute","space","safety"];
-let group="all";
+let group="active";
 
 function homes(){
   if(group==="active") return DATA.active.map(h=>({...h,_g:"active"}));
