@@ -2,384 +2,363 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>우리집 최종 4곳 비교</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+<title>Bethesda 임대 후보 비교 (2026-07-15)</title>
+<link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
-:root{
-  --bg:#F2F5F3; --card:#FFFFFF; --ink:#1B2A23; --sub:#5C6E64; --line:#E3EAE5;
-  --green:#2F6B4F; --green-bg:#E7F2EC; --gold:#A8770E; --gold-bg:#FBF3DA;
-  --best:#E7F2EC; --best-line:#2F6B4F; --warn:#9A6A12; --warn-bg:#FCF3E0;
-  --bar:#2F6B4F; --radius:16px;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html{-webkit-text-size-adjust:100%}
-body{font-family:"Pretendard Variable",Pretendard,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
-  background:var(--bg);color:var(--ink);font-size:15px;line-height:1.5;padding-bottom:60px}
-.wrap{max-width:680px;margin:0 auto;padding:0 12px}
-header{position:sticky;top:0;z-index:20;background:rgba(242,245,243,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
-.hd{max-width:680px;margin:0 auto;padding:12px 14px 10px}
-.hd h1{font-size:19px;font-weight:800;letter-spacing:-.02em}
-.hd .cnt{font-size:12px;color:var(--sub);font-weight:600;margin-top:3px}
-.sec{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);margin:12px 0;overflow:hidden;box-shadow:0 1px 3px rgba(27,42,35,.05)}
-.sec h2{font-size:15.5px;font-weight:800;padding:13px 15px 4px;display:flex;align-items:center;gap:7px}
-.sec .desc{font-size:11.5px;color:var(--sub);padding:0 15px 10px}
-
-/* ===== 추천 결과(막대) ===== */
-.rankwrap{padding:4px 14px 14px}
-.rankrow{display:flex;align-items:center;gap:10px;margin:9px 0}
-.rankrow .rlabel{flex:none;width:104px;font-size:12.5px;font-weight:700;display:flex;align-items:center;gap:5px;line-height:1.25}
-.rankrow .rlabel .medal{font-size:14px}
-.barbox{flex:1;background:#EEF2EF;border-radius:999px;height:24px;position:relative;overflow:hidden}
-.barfill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,#3E8C68,#2F6B4F);border-radius:999px;transition:width .45s cubic-bezier(.2,.7,.3,1)}
-.barrow.win .barfill{background:linear-gradient(90deg,#C79A2A,#A8770E)}
-.barscore{position:absolute;right:9px;top:0;bottom:0;display:flex;align-items:center;font-size:12px;font-weight:800;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.2)}
-
-/* ===== 슬라이더 ===== */
-.presets{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px}
-.preset{border:1.5px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-size:12.5px;font-weight:700;color:var(--green);cursor:pointer}
-.preset.on{background:var(--green);border-color:var(--green);color:#fff}
-.sliders{padding:2px 15px 14px}
-.slrow{margin:11px 0}
-.slrow .sltop{display:flex;justify-content:space-between;align-items:baseline;font-size:13px;font-weight:700;margin-bottom:3px}
-.slrow .slval{font-size:12px;font-weight:800;color:var(--green)}
-.slrow input[type=range]{width:100%;-webkit-appearance:none;appearance:none;height:6px;border-radius:999px;background:#DCE6E0;outline:none}
-.slrow input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:22px;height:22px;border-radius:50%;background:var(--green);cursor:pointer;box-shadow:0 1px 4px rgba(47,107,79,.4)}
-.slrow input[type=range]::-moz-range-thumb{width:22px;height:22px;border:none;border-radius:50%;background:var(--green);cursor:pointer}
-.why{margin:0 14px 12px;border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.why summary{list-style:none;cursor:pointer;padding:9px 13px;font-size:12.5px;font-weight:700;color:var(--sub);background:#FBFCFB}
-.why summary::-webkit-details-marker{display:none}
-.why[open] summary{border-bottom:1px solid var(--line)}
-.whybody{padding:10px 13px;font-size:11.5px;color:var(--sub)}
-.mtx{width:100%;border-collapse:collapse;font-size:11.5px;margin-top:6px}
-.mtx th,.mtx td{padding:5px 4px;text-align:center;border-bottom:1px solid var(--line)}
-.mtx th{color:var(--sub);font-weight:700}
-.mtx td.k{text-align:left;font-weight:700;color:var(--ink);white-space:nowrap}
-.mtx .mv{font-weight:800}
-
-/* ===== 비교표 ===== */
-.scrollhint{font-size:11px;color:var(--sub);padding:0 15px 6px;text-align:right}
-.tablebox{overflow-x:auto;-webkit-overflow-scrolling:touch}
-table.cmp{border-collapse:separate;border-spacing:0;width:100%;min-width:560px}
-table.cmp th,table.cmp td{padding:8px 8px;font-size:12px;vertical-align:top;border-bottom:1px solid var(--line);text-align:center}
-table.cmp thead th{position:sticky;top:0;background:#F0F4F1;z-index:3}
-table.cmp .colhead{font-size:12px;font-weight:800;line-height:1.25}
-table.cmp .colhead .hrent{display:block;font-size:11px;color:var(--green);font-weight:800;margin-top:2px}
-table.cmp .colhead .hsc{display:block;font-size:10px;color:var(--sub);font-weight:700;margin-top:1px}
-th.lab,td.lab{position:sticky;left:0;background:#FBFCFB;text-align:left;font-weight:700;color:var(--sub);z-index:2;width:78px;min-width:78px;font-size:11.5px}
-thead th.lab{z-index:4;background:#F0F4F1}
-tr.grp td{background:var(--green-bg);color:var(--green);font-weight:800;font-size:11.5px;text-align:left;padding:6px 10px;position:sticky;left:0}
-td.best{background:var(--best);box-shadow:inset 0 0 0 1.5px var(--best-line);border-radius:6px;font-weight:800}
-td .bstar{color:var(--best-line);font-size:10px;font-weight:800;display:block;margin-top:1px}
-
-/* ===== 장단점 카드 ===== */
-.cards{padding:6px 14px 14px;display:grid;gap:12px}
-.pcard{border:1px solid var(--line);border-left-width:5px;border-radius:14px;padding:12px 13px;background:#FBFCFB}
-.pcard h3{font-size:14.5px;font-weight:800;display:flex;align-items:baseline;gap:7px;flex-wrap:wrap}
-.pcard h3 .pr{font-size:13px;color:var(--green);font-weight:800}
-.pcard .sub{font-size:11.5px;color:var(--sub);margin:2px 0 9px}
-.pl{display:grid;gap:5px}
-.pl .li{display:flex;gap:7px;font-size:12.5px;line-height:1.45}
-.pl .li .ic{flex:none;font-size:12px;margin-top:1px}
-.pro .ic{color:#2F6B4F}
-.con .ic{color:#B5504A}
-.pcard .divider{height:1px;background:var(--line);margin:9px 0}
-.acts{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-top:11px}
-.act{display:flex;flex-direction:column;align-items:center;gap:3px;background:#fff;border:1px solid var(--line);border-radius:11px;padding:8px 2px;font-size:10.5px;font-weight:700;color:var(--ink);text-decoration:none;text-align:center;line-height:1.15}
-.act span.ic{font-size:17px}
-.act:active{background:var(--green-bg)}
-.foot{text-align:center;font-size:11px;color:var(--sub);margin:16px 6px 8px;line-height:1.6}
-:focus-visible{outline:2px solid var(--green);outline-offset:2px}
+  :root{
+    --g1:#1b7a4b; --g2:#2e9e63; --g3:#e8f5ee; --g4:#d3ecdd;
+    --ink:#14321f; --sub:#4c6b58; --line:#d5e5db; --bg:#f4faf6;
+    --warn:#b3541e; --warnbg:#fff4ea; --gold:#1b7a4b;
+    --bad:#c0392b;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:'Pretendard',system-ui,sans-serif;background:var(--bg);color:var(--ink);
+       -webkit-text-size-adjust:100%;line-height:1.5;}
+  .wrap{max-width:920px;margin:0 auto;padding:14px 12px 60px;}
+  header h1{font-size:20px;margin:2px 0 6px;font-weight:800;}
+  .meta{font-size:12px;color:var(--sub);background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:12px;}
+  .meta b{color:var(--g1)}
+  .meta .warnrow{color:var(--warn);margin-top:6px;font-weight:600;}
+  .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px;box-shadow:0 1px 2px rgba(20,50,31,.04);}
+  h2{font-size:16px;margin:0 0 10px;font-weight:800;display:flex;align-items:center;gap:6px;}
+  h2 .em{font-size:18px}
+  .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+  .tab{flex:1;min-width:90px;border:1px solid var(--line);background:#fff;color:var(--sub);border-radius:999px;
+       padding:8px 6px;font-size:12.5px;font-weight:700;cursor:pointer;text-align:center;}
+  .tab.on{background:var(--g1);color:#fff;border-color:var(--g1)}
+  /* sliders */
+  .preset{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+  .preset button{border:1px solid var(--g2);background:#fff;color:var(--g1);border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:700;cursor:pointer}
+  .preset button.on{background:var(--g2);color:#fff}
+  .slider{margin:10px 0}
+  .slider label{display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:4px}
+  .slider label .v{color:var(--g1)}
+  input[type=range]{width:100%;accent-color:var(--g1);height:26px}
+  /* ranking bars */
+  .rankrow{display:flex;align-items:center;gap:8px;margin:7px 0;font-size:13px}
+  .rankrow .nm{width:112px;flex:0 0 112px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .bar{flex:1;background:var(--g3);border-radius:8px;height:22px;position:relative;overflow:hidden}
+  .bar>span{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--g2),var(--g1));border-radius:8px;}
+  .bar>i{position:absolute;right:6px;top:0;line-height:22px;font-style:normal;font-size:11.5px;font-weight:800;color:#0c2a18}
+  .rankrow .badge{flex:0 0 22px;text-align:center;font-weight:800;color:var(--g1)}
+  .rank1 .nm{color:var(--g1)}
+  .linkbtn{display:inline-block;font-size:11px;color:var(--g1);text-decoration:none;border:1px solid var(--g4);border-radius:8px;padding:2px 7px;margin-top:3px}
+  .basis{display:none;margin-top:10px;overflow-x:auto}
+  table{border-collapse:collapse;width:100%;font-size:12px}
+  .basis th,.basis td{border:1px solid var(--line);padding:5px 7px;text-align:center;white-space:nowrap}
+  .basis th{background:var(--g3);position:sticky;top:0}
+  .toggle{margin-top:10px;font-size:12.5px;color:var(--g1);font-weight:700;cursor:pointer;text-decoration:underline}
+  /* compare table */
+  .cmpwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px}
+  table.cmp{border-collapse:separate;border-spacing:0;font-size:12px;min-width:640px}
+  table.cmp th,table.cmp td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:7px 8px;vertical-align:top}
+  table.cmp thead th{background:var(--g1);color:#fff;position:sticky;top:0;font-size:12px;text-align:left}
+  table.cmp .rowh{position:sticky;left:0;background:#f0f7f2;font-weight:700;z-index:2;min-width:78px;color:var(--sub)}
+  table.cmp thead .rowh{background:var(--g1);color:#fff;z-index:3}
+  table.cmp .grp td{background:var(--g3);font-weight:800;color:var(--g1);font-size:11.5px}
+  .best{background:#eafaf0;box-shadow:inset 0 0 0 2px var(--g1);border-radius:4px;font-weight:700}
+  .best::after{content:" ▲";color:var(--g1);font-size:10px}
+  .tag{display:inline-block;font-size:10px;font-weight:700;border-radius:6px;padding:1px 6px;margin-top:2px}
+  .tag.walk{background:#e5f6ec;color:var(--g1)} .tag.bus{background:#fff0e5;color:var(--warn)}
+  /* pro/con cards */
+  .home{border:1px solid var(--line);border-radius:14px;padding:13px;margin-bottom:12px;background:#fff}
+  .home h3{margin:0 0 3px;font-size:15.5px}
+  .home .addr{font-size:12px;color:var(--sub);margin-bottom:8px}
+  .kv{display:flex;flex-wrap:wrap;gap:5px 10px;font-size:12px;margin-bottom:8px}
+  .kv span{background:var(--g3);border-radius:7px;padding:3px 8px}
+  .kv .big{background:var(--g1);color:#fff;font-weight:800}
+  .warnbanner{background:var(--warnbg);border:1px solid #f0d5bd;color:var(--warn);font-size:12px;border-radius:9px;padding:7px 10px;margin-bottom:8px;font-weight:600}
+  .pc{display:flex;gap:8px;flex-wrap:wrap}
+  .pc>div{flex:1;min-width:150px}
+  .pc h4{margin:0 0 4px;font-size:12.5px}
+  .pc ul{margin:0;padding-left:16px;font-size:12px}
+  .pc .plus h4{color:var(--g1)} .pc .minus h4{color:var(--bad)}
+  .links{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+  .links a{font-size:11.5px;text-decoration:none;color:#fff;background:var(--g1);border-radius:8px;padding:6px 9px;font-weight:700}
+  .links a.alt{background:#fff;color:var(--g1);border:1px solid var(--g2)}
+  .excluded .x{font-size:12.5px;padding:7px 0;border-bottom:1px dashed var(--line)}
+  .excluded .x b{color:var(--bad)} .excluded .x .r{color:var(--sub);font-size:11.5px}
+  .foot{font-size:11px;color:var(--sub);text-align:center;margin-top:16px;line-height:1.6}
+  .grouplabel{font-size:11px;font-weight:800;color:#fff;background:var(--g2);border-radius:6px;padding:2px 7px;margin-left:6px}
+  .grouplabel.newg{background:#8a6d3b}
 </style>
 </head>
 <body>
-<header>
-  <div class="hd">
-    <h1>🏡 우리집 최종 4곳 비교</h1>
-    <div class="cnt">중요도를 조절하면 추천 순위가 바뀌어요 · 조사기준 2026-07-05</div>
-  </div>
-</header>
-
 <div class="wrap">
+  <header>
+    <h1>🏡 Bethesda 임대 후보 비교</h1>
+    <div class="meta">
+      조사기준일 <b>2026-07-15</b> · 자료: <b>Zillow · GreatSchools 실시간 확인 + 랜딩헬프 카톡</b><br>
+      출근지: <b>MedStar Washington Hospital Center</b> (110 Irving St NW, DC 20010)<br>
+      · <b>등교(초등)</b> ≠ <b>출근길(MedStar 병원)</b> — 라벨을 구분해 표기했습니다.<br>
+      · 거리·통근시간은 <b>추정</b>이며, 배정 초등·부대비용은 입주 전 최종 확인 필요.<br>
+      · 스쿨버스: 초등 <b>1마일 초과 = 버스</b>, <b>1마일 미만 = 도보권</b>(MCPS).
+      <div class="warnrow">⚠ 소득심사: 다수 집주인이 월세의 3배 연소득 요구(예 $4,500 → 연 $162,000). 부부 합산소득·잔고증명 준비 권장.</div>
+    </div>
+  </header>
 
-  <!-- 추천 결과 + 계산기 -->
-  <section class="sec">
-    <h2>🏆 우리에게 맞는 순위</h2>
-    <div class="desc">아래 <b>중요도 슬라이더</b>를 움직이면 4곳 점수가 실시간으로 다시 계산돼요. 정답이 아니라 <b>부부가 우선순위를 맞춰보는 도구</b>예요.</div>
-    <div class="rankwrap" id="ranks"></div>
+  <div class="tabs" id="tabs">
+    <div class="tab on" data-g="all">전체 (10)</div>
+    <div class="tab" data-g="active">진행 후보 (7)</div>
+    <div class="tab" data-g="new">신규 ES9+ (3)</div>
+  </div>
 
-    <div class="presets" id="presets"></div>
-    <div class="sliders" id="sliders"></div>
+  <!-- SCORER -->
+  <div class="card">
+    <h2><span class="em">🏆</span> 중요도 점수 계산기</h2>
+    <div class="preset" id="preset">
+      <button data-p="balance" class="on">균형</button>
+      <button data-p="school">학군 우선</button>
+      <button data-p="commute">통근·가성비</button>
+      <button data-p="space">공간 우선</button>
+    </div>
+    <div class="slider"><label>🎓 학군(초등 등급) <span class="v" id="v_es">3</span></label><input type="range" min="0" max="5" value="3" id="w_es"></div>
+    <div class="slider"><label>💵 임대료(쌀수록 유리) <span class="v" id="v_rent">3</span></label><input type="range" min="0" max="5" value="3" id="w_rent"></div>
+    <div class="slider"><label>🚗 출근길(MedStar, 짧을수록) <span class="v" id="v_commute">3</span></label><input type="range" min="0" max="5" value="3" id="w_commute"></div>
+    <div class="slider"><label>📐 집 크기·방 <span class="v" id="v_space">3</span></label><input type="range" min="0" max="5" value="3" id="w_space"></div>
+    <div class="slider"><label>🛡️ 안전·동네 <span class="v" id="v_safety">3</span></label><input type="range" min="0" max="5" value="3" id="w_safety"></div>
+    <div id="ranking" style="margin-top:12px"></div>
+    <div class="toggle" id="basisToggle">▸ 점수 근거 보기</div>
+    <div class="basis" id="basis"></div>
+  </div>
 
-    <details class="why">
-      <summary>▸ 점수는 어떻게 나온 건가요? (항목별 점수 보기)</summary>
-      <div class="whybody">
-        각 항목을 4곳끼리 비교해 <b>0~100점</b>으로 환산한 뒤, 위 중요도로 가중평균한 값이에요.
-        <div id="matrix"></div>
-        <p style="margin-top:8px">· <b>임대료</b>는 쌀수록, <b>통근</b>은 짧을수록 높은 점수예요.<br>
-        · <b>출근길</b>은 부모 직장인 MedStar Washington Hospital Center(워싱턴 DC)까지 <b>차량 추정 시간</b>이에요 — 아이 <b>등교</b>(초등)와는 별개예요. 아래 카드의 <b>🚗 출근길</b> 버튼으로 실제 시간을 꼭 확인하세요.<br>
-        · <b>공간</b>은 평수(70%)와 방 개수(30%)를 함께 봤어요.</p>
-      </div>
-    </details>
-  </section>
+  <!-- COMPARE TABLE -->
+  <div class="card">
+    <h2><span class="em">📊</span> 나란히 비교표</h2>
+    <div style="font-size:11.5px;color:var(--sub);margin-bottom:8px">가장 유리한 칸은 <span style="color:var(--g1);font-weight:700">초록 테두리 ▲</span>로 자동 강조. 좌우로 스크롤하세요.</div>
+    <div class="cmpwrap"><table class="cmp" id="cmp"></table></div>
+  </div>
 
-  <!-- 나란히 비교표 -->
-  <section class="sec">
-    <h2>📊 나란히 비교</h2>
-    <div class="desc">항목별로 <b style="color:var(--green)">가장 유리한 칸</b>은 초록 테두리로 표시했어요.</div>
-    <div class="scrollhint">← 좌우로 넘겨보세요 →</div>
-    <div class="tablebox"><table class="cmp" id="cmp"></table></div>
-  </section>
+  <!-- PRO/CON CARDS -->
+  <div class="card">
+    <h2><span class="em">⚖️</span> 장단점 · 링크</h2>
+    <div id="cards"></div>
+  </div>
 
-  <!-- 장단점 카드 -->
-  <section class="sec">
-    <h2>⚖️ 집별 장단점</h2>
-    <div class="desc">각 집의 좋은 점과 아쉬운 점을 정리했어요. 버튼으로 바로 집구경·지도·출근길을 볼 수 있어요.</div>
-    <div class="cards" id="cards"></div>
-  </section>
+  <!-- EXCLUDED -->
+  <div class="card excluded">
+    <h2><span class="em">🚫</span> 이미 제외된 후보</h2>
+    <div id="excl"></div>
+  </div>
 
-  <p class="foot">
-    조사기준 2026-07-05 · 배정학교 MCPS · 초등 점수 GreatSchools · 집구경 각 집 Zillow 상세페이지<br>
-    출근길 시간은 직장(MedStar 병원, DC)까지 <b>차량 추정치</b>라 실제와 다를 수 있어요(🚗 출근길 버튼으로 확인) · 아이 등교(초등)와는 별개예요 · 유틸·보증금·반려동물 등 세부조건은 계약 전 집주인·중개인에게 최종 확인하세요.
-  </p>
+  <div class="foot">
+    데이터는 조사시점(2026-07-15) 기준이며 매물 상태·가격·학군 등급은 변동될 수 있습니다.<br>
+    배정 학교·리스 기간·부대비용·외국인 지원 가능 여부는 집주인/관리사·MCPS 확인이 필요합니다.
+  </div>
 </div>
 
 <script>
-const HOSPITAL="MedStar Washington Hospital Center, 110 Irving St NW, Washington, DC 20010";
-
-/* 4곳 데이터 (2026-07-05 조사 기준) */
-const HOUSES=[
-  {id:"bradley", short:"5042 Bradley Blvd", area:"Chevy Chase", zpid:"37192598",
-   slug:"5042-Bradley-Blvd-Chevy-Chase-MD-20815", fullAddr:"5042 Bradley Blvd, Chevy Chase, MD 20815",
-   type:"주택(A-Frame)", beds:3, baths:"2.5", sqft:1200, rent:"$3,995", rentNum:3995,
-   movein:"2026-08-01", lease:"12–48개월", deposit:"보증금 $4,300 · 신청 $45 · 선납 1개월",
-   laundry:"메인층 포함", parking:"진입로 2면", util:"세입자 전기(잔여 유틸 확인 권장)",
-   pets:"확인 필요", hoa:"소유자 부담(조합비)",
-   es:"Westbrook", esScore:9, ms:"Westland", hs:"B-CC",
-   esAddr:"5110 Allan Ter, Bethesda, MD 20816",
-   esLink:"https://www.greatschools.org/maryland/bethesda/977-Westbrook-Elementary-School/",
-   commuteMin:22, commuteTxt:"차량 약 22분(추정)", walkTxt:"—", safety:95,
-   nbhd:"Chevy Chase 최상급 부촌 · 다운타운 인접 · 매우 안전",
-   pros:["4곳 중 임대료 가장 낮음 ($3,995)","MedStar 통근 가장 가까움(추정)","Chevy Chase 최상급 부촌·다운타운 인접","8/1 입주 가능"],
-   cons:["평수 가장 작음 (1,200 sqft) · 방 3개","A-Frame 구조라 공간 호불호 있을 수 있음","반려동물·잔여 유틸 조건 확인 필요"]},
-
-  {id:"jensen", short:"7919 Jensen Pl", area:"Bannockburn", zpid:"37197332",
-   slug:"7919-Jensen-Pl-Bethesda-MD-20817", fullAddr:"7919 Jensen Pl, Bethesda, MD 20817",
-   type:"타운하우스", beds:4, baths:"3.5", sqft:1452, rent:"$4,100", rentNum:4100,
-   movein:"협의", lease:"12개월+ (24개월 옵션)", deposit:"보증금 1개월 (신용 720+, 소득 3.5x)",
-   laundry:"In-Unit 포함", parking:"노외주차", util:"세입자 전 유틸 + 잔디·유지보수 / HOA는 임대료 포함",
-   pets:"최대 2마리 케이스별 ($250 + 월 $25/마리)", hoa:"임대료 포함",
-   es:"Bannockburn", esScore:9, ms:"Pyle", hs:"Whitman",
-   esAddr:"6520 Dalroy Ln, Bethesda, MD 20817",
-   esLink:"https://www.greatschools.org/maryland/bethesda/856-Bannockburn-Elementary-School/",
-   commuteMin:30, commuteTxt:"차량 약 30분(추정)", walkTxt:"—", safety:95,
-   nbhd:"Bannockburn 최상급 부촌 · 숲·강 인접 · 매우 안전 · Whitman 학군",
-   pros:["방 4개 · 욕실 3.5로 4곳 중 욕실 최다","Bannockburn 최상급 부촌 · Whitman 명문 학군","In-Unit 세탁 · HOA가 임대료에 포함","반려동물 2마리까지 가능(케이스별)"],
-   cons:["평수 중간(1,452)인데 방 4개라 방이 다소 작을 수 있음","MedStar 통근 다소 멂(추정)","세입자가 전 유틸 + 잔디·유지보수 부담"]},
-
-  {id:"wilmett", short:"6400 Wilmett Rd", area:"Wyngate", zpid:"37177607",
-   slug:"6400-Wilmett-Rd-Bethesda-MD-20817", fullAddr:"6400 Wilmett Rd, Bethesda, MD 20817",
-   type:"단독주택", beds:4, baths:"3", sqft:2066, rent:"$4,200", rentNum:4200,
-   movein:"2026-08-01", lease:"12개월+", deposit:"개별 확인",
-   laundry:"In-Unit 포함", parking:"노외주차", util:"세입자 부담(추정)",
-   pets:"개 OK · 고양이 불가 (펫 $300 + 월 $45)", hoa:"—",
-   es:"Wyngate", esScore:9, ms:"North Bethesda", hs:"Walter Johnson",
-   esAddr:"9300 Wadsworth Dr, Bethesda, MD 20817",
-   esLink:"https://www.greatschools.org/maryland/bethesda/990-Wyngate-Elementary-School/",
-   commuteMin:26, commuteTxt:"차량 약 26분(추정)", walkTxt:"Wyngate 초등 도보권", safety:90,
-   nbhd:"Wyngate · Alta Vista: 매우 안전 · NIH 인근 · 초등 도보권",
-   pros:["평수 가장 큼 (2,066 sqft) · 방 4개 단독주택","Wyngate 초등 도보권 → 등하교 편리","NIH 인근 · 8/1 입주 · In-Unit 세탁","개 반려 가능"],
-   cons:["임대료 세 번째 ($4,200)","고양이 불가 · 펫 비용 있음","유틸 조건 미표기(세입자 부담 추정) → 확인 필요"]},
-
-  {id:"galsworthy", short:"10115 Galsworthy Pl", area:"Seven Locks", zpid:"37265899",
-   slug:"10115-Galsworthy-Pl-Bethesda-MD-20817", fullAddr:"10115 Galsworthy Pl, Bethesda, MD 20817",
-   type:"타운하우스", beds:3, baths:"3", sqft:1748, rent:"$4,400", rentNum:4400,
-   movein:"협의", lease:"12개월+", deposit:"개별 확인",
-   laundry:"In-Unit 포함", parking:"부착 차고", util:"세입자 부담 · 렌터보험 필수",
-   pets:"고양이·소형견 OK", hoa:"—",
-   es:"Seven Locks", esScore:10, ms:"Cabin John", hs:"Churchill",
-   esAddr:"9500 Seven Locks Rd, Bethesda, MD 20817",
-   esLink:"https://www.greatschools.org/maryland/bethesda/954-Seven-Locks-Elementary-School/",
-   commuteMin:33, commuteTxt:"차량 약 33분(추정)", walkTxt:"—", safety:92,
-   nbhd:"West Bethesda · Churchill 학군 · Cabin John Park 인근 · 부촌·안전",
-   pros:["초등 10점 — 4곳 중 유일 (Seven Locks) · Churchill 학군","부착 차고 · In-Unit 세탁","고양이·소형견 모두 가능","Cabin John Park 인근 · 조용한 부촌"],
-   cons:["임대료 가장 높음 ($4,400)","방 3개 (타운하우스)","MedStar 통근 가장 멂(추정)","세입자 유틸 + 렌터보험 필수"]}
-];
-
-/* ===== 점수 계산 ===== */
-const MIN_RENT=Math.min(...HOUSES.map(h=>h.rentNum));
-const MAX_SQFT=Math.max(...HOUSES.map(h=>h.sqft));
-const MAX_BEDS=Math.max(...HOUSES.map(h=>h.beds));
-const MIN_COM=Math.min(...HOUSES.map(h=>h.commuteMin));
-HOUSES.forEach(h=>{
-  h.cs={
-    school:h.esScore*10,
-    rent:100*MIN_RENT/h.rentNum,
-    commute:100*MIN_COM/h.commuteMin,
-    space:0.7*(100*h.sqft/MAX_SQFT)+0.3*(100*h.beds/MAX_BEDS),
-    safety:h.safety
-  };
-});
-
-const CRIT=[
-  {key:"school", label:"학군", icon:"🏫"},
-  {key:"rent",   label:"임대료(낮을수록)", icon:"💲"},
-  {key:"commute",label:"출근길(짧을수록)", icon:"🚗"},
-  {key:"space",  label:"집 크기·방", icon:"📐"},
-  {key:"safety", label:"안전·동네", icon:"🛡️"}
-];
-const PRESETS={
-  "균형":        {school:3,rent:3,commute:3,space:3,safety:3},
-  "학군 우선":    {school:5,rent:2,commute:3,space:2,safety:2},
-  "통근·가성비":  {school:3,rent:4,commute:4,space:2,safety:2},
-  "공간 우선":    {school:3,rent:2,commute:2,space:5,safety:2}
+const DATA = {
+  active: [
+    {id:"ewing",name:"9502 Ewing Dr",address:"9502 Ewing Dr, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/9502-Ewing-Dr-Bethesda-MD-20817/37177934_zpid/",type:"단독주택",beds:3,baths:2,sqft:1597,rent:3200,avail:"2026-09-01",furnished:true,parking:"확인 필요(2대)",utilities:"확인 필요",es:{name:"Wyngate ES",score:9,dist:0.2},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:31,safety:88,foreign:"가능(현 세입자 프랑스인)",
+     pros:["월세 최저 $3,200","가구 포함(furnished)","Wyngate 초등 9점 도보권(0.2mi)","외국인 입주 확인됨"],cons:["9/1 입주(계약 조정 필요)","출근길 다소 긺(북쪽)","3베드로 가장 작음","현 세입자 거주 중 투어 제약"],flag:"가구 포함 매물 — 짐/가구 계획 확인"},
+    {id:"rannoch",name:"6703 Rannoch Rd",address:"6703 Rannoch Rd, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/6703-Rannoch-Rd-Bethesda-MD-20817/37188856_zpid/",type:"단독주택",beds:4,baths:2.5,sqft:2486,rent:4200,avail:"2026-08-17",furnished:false,parking:"차고1 + 게스트주차",utilities:"확인 필요",es:{name:"Bannockburn ES",score:9,dist:0.2},ms:{name:"Thomas W. Pyle MS",score:10},hs:{name:"Walt Whitman HS",score:9},commute:28,safety:90,foreign:"가능(소득배수 기준은 집주인 결정)",
+     pros:["아내가 위치 가장 선호","최근 전체 리노베이션(거의 새집)","Bannockburn9·Pyle10·Whitman9 명문라인, 초등 도보권","가장 넓음 2,486sqft"],cons:["8/17 입주·쇼잉 8/15부터","차고 1대(2번째는 게스트주차)","집주인 여행으로 연락지연 이력"],flag:null},
+    {id:"pleasantgate",name:"9758 Pleasant Gate Ln",address:"9758 Pleasant Gate Ln, Potomac, MD 20854",url:"https://www.zillow.com/homedetails/9758-Pleasant-Gate-Ln-Potomac-MD-20854/37268697_zpid/",type:"단독주택",beds:4,baths:3,sqft:2020,rent:3995,avail:"즉시(8/1 협의)",furnished:false,parking:"차고없음·지정주차 2칸",utilities:"확인 필요",es:{name:"Seven Locks ES",score:10,dist:2.4},ms:{name:"Cabin John MS",score:9},hs:{name:"Winston Churchill HS",score:9},commute:37,safety:92,foreign:"집주인 매우 우호적",
+     pros:["Seven Locks 초등 10점(전체 최고)","단지 수영장·테니스·피클볼","집주인 매우 우호적","비어있어 바로 정리 가능"],cons:["초등 2.4mi·스쿨버스(도보 불가)","출근길 최장(약 37분)·Potomac","차고 없음(지정주차 2칸)"],flag:null},
+    {id:"wilmett",name:"6400 Wilmett Rd",address:"6400 Wilmett Rd, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/6400-Wilmett-Rd-Bethesda-MD-20817/37177607_zpid/",type:"단독주택",beds:4,baths:3,sqft:2066,rent:4200,avail:"2026-08-01",furnished:false,parking:"확인 필요(2대)",utilities:"확인 필요",es:{name:"Wyngate ES",score:9,dist:0.1},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:32,safety:88,foreign:"미확인(관리사 연결 안 됨)",
+     pros:["Wyngate 초등 9점 초근접 도보권(0.1mi)","유튜브 투어 영상 존재","8/1 입주 가능"],cons:["관리사 사람 연결 안 됨·외국인 승인 미확인","정원관리·주차 등 부대조건 확인 필요"],flag:"아내 지정 최후순위 — 외국인 지원 여부 미확인"},
+    {id:"saratoga",name:"5121 Saratoga Ave",address:"5121 Saratoga Ave, Bethesda, MD 20816",url:"https://www.zillow.com/homedetails/5121-Saratoga-Ave-Bethesda-MD-20816/37185647_zpid/",type:"단독주택",beds:4,baths:3,sqft:2200,rent:4500,avail:"즉시",furnished:false,parking:"드라이브웨이 최대 4대",utilities:"확인 필요",es:{name:"Westbrook ES",score:9,dist:0.4},ms:{name:"Westland MS",score:10},hs:{name:"B-CC HS",score:8},commute:23,safety:90,foreign:"가능(재정 증빙 시)·중앙냉난방",
+     pros:["출근길 최단(약 23분, DC 근접)","드라이브웨이 최대 4대","Westbrook9·Westland10, 초등 도보권","중앙 냉난방 확인"],cons:["월세 최고 $4,500","Zillow 사진 적어 영상 확인 필요","고교 B-CC 8점(라인 중 낮음)"],flag:null},
+    {id:"singleton",name:"9407 Singleton Dr",address:"9407 Singleton Dr, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/9407-Singleton-Dr-Bethesda-MD-20817/37188548_zpid/",type:"단독주택",beds:4,baths:2,sqft:1937,rent:4350,avail:"2026-08-26",furnished:false,parking:"확인 필요",utilities:"확인 필요",es:{name:"Wyngate ES",score:9,dist:0.7},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:30,safety:88,foreign:"확인 필요",
+     pros:["8/26 입주 — 비자 지연 일정에 부합","Wyngate 9점 라인 도보권","즉시 온라인 지원(Apply instantly)"],cons:["욕실 2개(가족 규모 대비 확인)","외국인 지원·부대조건 미확인"],flag:null},
+    {id:"jensen",name:"7919 Jensen Pl",address:"7919 Jensen Pl, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/7919-Jensen-Pl-Bethesda-MD-20817/37197332_zpid/",type:"타운하우스",beds:4,baths:3.5,sqft:1452,rent:4100,avail:"즉시",furnished:false,parking:"off-street parking",utilities:"세입자 전액+잔디/관리, HOA 월세포함",es:{name:"Bannockburn ES",score:9,dist:1.2},ms:{name:"Thomas W. Pyle MS",score:10},hs:{name:"Walt Whitman HS",score:9},commute:30,safety:88,foreign:"확인 필요(기존 지원자 있었음)",
+     pros:["선호하는 타운하우스","Bannockburn9·Pyle10·Whitman9 명문라인","즉시 입주"],cons:["초등 1.2mi·스쿨버스","세입자가 모든 유틸리티+잔디/관리 부담","면적 최소 1,452sqft","기존 지원자 있어 백업 성격"],flag:"기존 지원자 존재 — 무산 시 연락(백업)"}
+  ],
+  new:[
+    {id:"westlake14",name:"7470 Westlake Ter #14",address:"7470 Westlake Ter #14, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/7470-Westlake-Ter-14-Bethesda-MD-20817/37264191_zpid/",type:"타운하우스",beds:4,baths:3.5,sqft:2214,rent:3850,avail:"2026-08-01",furnished:false,parking:"확인 필요",utilities:"확인 필요",es:{name:"Ashburton ES",score:9,dist:1.4},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:37,safety:87,foreign:"미확인(신규·미연락)",
+     pros:["선호하는 타운하우스","가성비 좋음 $3,850","8/1 입주","Ashburton 9점 라인"],cons:["초등 1.4mi·스쿨버스","출근길 약 37분","아직 연락/검증 전(신규 발굴)"],flag:"신규 발굴 — 랜딩헬프 미컨택"},
+    {id:"westlake56",name:"7572 Westlake Ter #56",address:"7572 Westlake Ter #56, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/7572-Westlake-Ter-56-Bethesda-MD-20817/37264852_zpid/",type:"타운하우스",beds:4,baths:3.5,sqft:2428,rent:4000,avail:"즉시",furnished:false,parking:"확인 필요",utilities:"확인 필요",es:{name:"Ashburton ES",score:9,dist:1.4},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:37,safety:87,foreign:"미확인(신규·미연락)",
+     pros:["넓은 타운하우스 2,428sqft","즉시 입주","Ashburton 9점 라인","7470과 같은 단지"],cons:["초등 1.4mi·스쿨버스","출근길 약 37분","리스 기간 표기 없음(확인)","아직 연락/검증 전"],flag:"신규 발굴 — 랜딩헬프 미컨택"},
+    {id:"bradleyhills",name:"(비공개) Bradley Hills",address:"(비공개 주소) Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/Bethesda-MD-20817/37179594_zpid/",type:"단독주택",beds:4,baths:3,sqft:1418,rent:3900,avail:"2026-07-30",furnished:false,parking:"확인 필요",utilities:"확인 필요",es:{name:"Bradley Hills ES",score:9,dist:0.4},ms:{name:"Thomas W. Pyle MS",score:10},hs:{name:"Walt Whitman HS",score:9},commute:30,safety:90,foreign:"미확인(신규·미연락)",
+     pros:["Bradley Hills9·Pyle10·Whitman9 명문라인, 초등 도보권(0.4mi)","가성비 $3,900","7/30 입주"],cons:["Zillow 주소 비공개(정확 위치·지도 제한)","면적 최소 1,418sqft","아직 연락/검증 전"],flag:"주소 비공개 매물 — 정확 위치 확인 필요"}
+  ],
+  excluded:[
+    {a:"5042 Bradley Blvd, Chevy Chase 20815",r:"다른 지원자로 계약 확정 → Off market(오늘 확인)"},
+    {a:"10113 Galsworthy Pl, Bethesda 20817",r:"집주인이 1년보다 2년 계약 선호 → 지원 거절(7/15). 리노베이션·우호적 리얼터였으나 무산"},
+    {a:"10115 Galsworthy Pl, Bethesda 20817",r:"연락 두절·자동응답만 반복, 사람 연결 불가"},
+    {a:"5915 Ryland Dr, Bethesda 20817",r:"집주인 multi-year(2년+) 계약 선호"},
+    {a:"10106 Bosworth Ct, Bethesda 20817",r:"off market 전환"},
+    {a:"Rockville 타운홈 ($3,500)",r:"Rockville 소재 — Bethesda 지역 이탈"}
+  ]
 };
-let W={...PRESETS["균형"]};
-let activePreset="균형";
 
-function totalScore(h){
-  let sw=0, s=0;
-  for(const c of CRIT){ sw+=W[c.key]; s+=W[c.key]*h.cs[c.key]; }
-  return sw>0 ? s/sw : (CRIT.reduce((a,c)=>a+h.cs[c.key],0)/CRIT.length);
+const PRESETS = {
+  balance:{es:3,rent:3,commute:3,space:3,safety:3},
+  school:{es:5,rent:2,commute:2,space:2,safety:3},
+  commute:{es:2,rent:5,commute:5,space:2,safety:2},
+  space:{es:2,rent:2,commute:2,space:5,safety:3}
+};
+const KEYS=["es","rent","commute","space","safety"];
+let group="all";
+
+function homes(){
+  if(group==="active") return DATA.active.map(h=>({...h,_g:"active"}));
+  if(group==="new") return DATA.new.map(h=>({...h,_g:"new"}));
+  return [...DATA.active.map(h=>({...h,_g:"active"})),...DATA.new.map(h=>({...h,_g:"new"}))];
+}
+function weights(){const w={};KEYS.forEach(k=>w[k]=+document.getElementById("w_"+k).value);return w;}
+function walkbus(d){return d<=1.0?{t:"도보권",c:"walk"}:{t:"스쿨버스",c:"bus"};}
+
+function scores(list){
+  const minRent=Math.min(...list.map(h=>h.rent));
+  const minCom=Math.min(...list.map(h=>h.commute));
+  const maxSqft=Math.max(...list.map(h=>h.sqft));
+  const maxBeds=Math.max(...list.map(h=>h.beds));
+  return list.map(h=>{
+    const s={
+      es:h.es.score*10,
+      rent:100*(minRent/h.rent),
+      commute:100*(minCom/h.commute),
+      space:0.7*(h.sqft/maxSqft*100)+0.3*(h.beds/maxBeds*100),
+      safety:h.safety
+    };
+    const w=weights();let num=0,den=0;
+    KEYS.forEach(k=>{num+=w[k]*s[k];den+=w[k];});
+    const total=den?num/den:0;
+    return {h,s,total};
+  });
 }
 
-const MEDALS=["🥇","🥈","🥉",""];
-function renderRanks(){
-  const ranked=[...HOUSES].map(h=>({h,score:totalScore(h)})).sort((a,b)=>b.score-a.score);
-  const top=ranked[0].score||1;
-  document.getElementById("ranks").innerHTML=ranked.map((r,i)=>{
-    const w=Math.max(6,Math.round(r.score/ (top>0?top:1) *100));
-    return `<div class="rankrow">
-      <div class="rlabel"><span class="medal">${MEDALS[i]}</span><span>${r.h.short}<br><span style="font-weight:600;color:var(--sub);font-size:11px">${r.h.area}</span></span></div>
-      <div class="barbox barrow ${i===0?'win':''}"><div class="barfill" style="width:${w}%"></div><span class="barscore">${Math.round(r.score)}점</span></div>
+function renderRanking(){
+  const list=homes();
+  const sc=scores(list).sort((a,b)=>b.total-a.total);
+  const max=Math.max(...sc.map(x=>x.total),1);
+  const box=document.getElementById("ranking");
+  box.innerHTML=sc.map((x,i)=>{
+    const pct=Math.round(x.total/max*100);
+    const gl=x.h._g==="new"?'<span class="grouplabel newg">신규</span>':'';
+    return `<div class="rankrow ${i===0?'rank1':''}">
+      <div class="badge">${i+1}</div>
+      <div class="nm">${x.h.name}${gl}</div>
+      <div class="bar"><span style="width:${pct}%"></span><i>${x.total.toFixed(0)}</i></div>
     </div>`;
   }).join("");
+  renderBasis(sc);
+}
+function renderBasis(sc){
+  const b=document.getElementById("basis");
+  const head=`<tr><th>매물</th><th>학군</th><th>임대료</th><th>출근길</th><th>공간</th><th>안전</th><th>총점</th></tr>`;
+  const rows=sc.map(x=>`<tr><td style="text-align:left;font-weight:700">${x.h.name}</td>
+    <td>${x.s.es.toFixed(0)}</td><td>${x.s.rent.toFixed(0)}</td><td>${x.s.commute.toFixed(0)}</td>
+    <td>${x.s.space.toFixed(0)}</td><td>${x.s.safety.toFixed(0)}</td>
+    <td style="font-weight:800;color:var(--g1)">${x.total.toFixed(0)}</td></tr>`).join("");
+  b.innerHTML=`<table>${head}${rows}</table>
+    <div style="font-size:11px;color:var(--sub);margin-top:6px">항목 점수는 후보들끼리 0~100 정규화. 안전 점수는 지역 평판 기반 <b>정성 추정치</b>입니다.</div>`;
 }
 
-function renderPresets(){
-  document.getElementById("presets").innerHTML=Object.keys(PRESETS).map(name=>
-    `<button class="preset ${activePreset===name?'on':''}" onclick="setPreset('${name}')">${name}</button>`
-  ).join("");
-}
-function setPreset(name){
-  W={...PRESETS[name]}; activePreset=name;
-  renderPresets(); syncSliders(); renderRanks(); renderMatrix();
-}
-function renderSliders(){
-  document.getElementById("sliders").innerHTML=CRIT.map(c=>
-    `<div class="slrow">
-       <div class="sltop"><span>${c.icon} ${c.label}</span><span class="slval" id="sv-${c.key}">${W[c.key]}</span></div>
-       <input type="range" min="0" max="5" step="1" value="${W[c.key]}" id="sl-${c.key}"
-         oninput="onSlide('${c.key}',this.value)">
-     </div>`
-  ).join("");
-}
-function syncSliders(){
-  CRIT.forEach(c=>{ const el=document.getElementById("sl-"+c.key); if(el) el.value=W[c.key];
-    const v=document.getElementById("sv-"+c.key); if(v) v.textContent=W[c.key]; });
-}
-function onSlide(key,val){
-  W[key]=+val; document.getElementById("sv-"+key).textContent=val;
-  activePreset=null; renderPresets();
-  renderRanks(); renderMatrix();
-}
-
-function renderMatrix(){
-  let html='<table class="mtx"><thead><tr><th class="k">항목</th>'+
-    HOUSES.map(h=>`<th>${h.area}</th>`).join("")+'</tr></thead><tbody>';
-  for(const c of CRIT){
-    html+=`<tr><td class="k">${c.icon} ${c.label.replace(/\(.*/,'')}</td>`+
-      HOUSES.map(h=>{
-        const v=Math.round(h.cs[c.key]);
-        const isMax=Math.max(...HOUSES.map(x=>x.cs[c.key]))-h.cs[c.key]<0.5;
-        return `<td><span class="mv" style="color:${isMax?'var(--green)':'var(--ink)'}">${v}</span></td>`;
-      }).join("")+'</tr>';
-  }
-  html+='</tbody></table>';
-  document.getElementById("matrix").innerHTML=html;
+function td(txt,best){return `<td class="${best?'best':''}">${txt}</td>`;}
+function renderCompare(){
+  const list=homes();
+  const minRent=Math.min(...list.map(h=>h.rent));
+  const minCom=Math.min(...list.map(h=>h.commute));
+  const maxSqft=Math.max(...list.map(h=>h.sqft));
+  const maxBeds=Math.max(...list.map(h=>h.beds));
+  const maxEs=Math.max(...list.map(h=>h.es.score));
+  const n=list.length;
+  const T=document.getElementById("cmp");
+  const grp=(label)=>`<tr class="grp"><td class="rowh" style="background:var(--g3);color:var(--g1)">${label}</td>${'<td></td>'.repeat(n)}</tr>`;
+  let html="";
+  // header
+  html+=`<thead><tr><th class="rowh">항목</th>${list.map(h=>`<th>${h.name}<div style="font-weight:400;font-size:10.5px;opacity:.9">${h._g==="new"?"신규 ES9+":"진행 후보"}</div></th>`).join("")}</tr></thead><tbody>`;
+  // 한눈에
+  html+=grp("한눈에");
+  html+=`<tr><td class="rowh">형태</td>${list.map(h=>td(h.type)).join("")}</tr>`;
+  html+=`<tr><td class="rowh">월세</td>${list.map(h=>td("$"+h.rent.toLocaleString(),h.rent===minRent)).join("")}</tr>`;
+  html+=`<tr><td class="rowh">방/욕실</td>${list.map(h=>td(h.beds+"bd / "+h.baths+"ba",h.beds===maxBeds)).join("")}</tr>`;
+  html+=`<tr><td class="rowh">면적</td>${list.map(h=>td(h.sqft.toLocaleString()+" sqft",h.sqft===maxSqft)).join("")}</tr>`;
+  html+=`<tr><td class="rowh">입주가능</td>${list.map(h=>td(h.avail)).join("")}</tr>`;
+  // 학군
+  html+=grp("🎓 학군(등교)");
+  html+=`<tr><td class="rowh">배정 초등</td>${list.map(h=>td(h.es.name)).join("")}</tr>`;
+  html+=`<tr><td class="rowh">초등 등급</td>${list.map(h=>td(h.es.score+"/10",h.es.score===maxEs)).join("")}</tr>`;
+  html+=`<tr><td class="rowh">초등 거리</td>${list.map(h=>{const wb=walkbus(h.es.dist);return td(h.es.dist+"mi <span class='tag "+wb.c+"'>"+wb.t+"</span>",wb.c==="walk");}).join("")}</tr>`;
+  html+=`<tr><td class="rowh">중/고</td>${list.map(h=>td(h.ms.name+" "+h.ms.score+"·"+h.hs.name+" "+h.hs.score)).join("")}</tr>`;
+  // 비용
+  html+=grp("💵 비용");
+  html+=`<tr><td class="rowh">주차</td>${list.map(h=>td(h.parking)).join("")}</tr>`;
+  html+=`<tr><td class="rowh">유틸리티</td>${list.map(h=>td(h.utilities)).join("")}</tr>`;
+  html+=`<tr><td class="rowh">가구</td>${list.map(h=>td(h.furnished?"가구 포함":"미포함",h.furnished)).join("")}</tr>`;
+  // 생활/출근
+  html+=grp("🚗 출근길·생활");
+  html+=`<tr><td class="rowh">MedStar 통근</td>${list.map(h=>td("약 "+h.commute+"분",h.commute===minCom)).join("")}</tr>`;
+  html+=`<tr><td class="rowh">외국인 지원</td>${list.map(h=>td(h.foreign)).join("")}</tr>`;
+  html+=`<tr><td class="rowh">비고</td>${list.map(h=>td(h.flag?("⚠ "+h.flag):"—")).join("")}</tr>`;
+  html+="</tbody>";
+  T.innerHTML=html;
 }
 
-/* ===== 비교표 ===== */
-function zlink(h){return `https://www.zillow.com/homedetails/${h.slug}/${h.zpid}_zpid/`;}
-function gmapsSearch(q){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(q);}
-function gmapsDir(o,d,mode){return "https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(o)+"&destination="+encodeURIComponent(d)+"&travelmode="+mode;}
+function mapsSearch(a){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(a);}
+function walkLink(a,school){return "https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(a)+"&destination="+encodeURIComponent(school+", Bethesda MD")+"&travelmode=walking";}
+function driveLink(a){return "https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(a)+"&destination="+encodeURIComponent("110 Irving St NW, Washington, DC 20010")+"&travelmode=driving";}
+function gsLink(school){return "https://www.greatschools.org/search/search.page?q="+encodeURIComponent(school)+"&state=MD";}
 
-const IDX={bradley:0,jensen:1,wilmett:2,galsworthy:3};
-// best: 해당 행에서 초록 강조할 컬럼 인덱스(단일). null이면 강조 없음.
-const GROUPS=[
-  {name:"💡 한눈에", rows:[
-    {lab:"임대료", get:h=>h.rent, best:0},
-    {lab:"방/욕실", get:h=>h.beds+" / "+h.baths, best:null},
-    {lab:"평수", get:h=>h.sqft.toLocaleString()+" sqft", best:2},
-    {lab:"주택형태", get:h=>h.type, best:null},
-    {lab:"입주 가능", get:h=>h.movein, best:null}
-  ]},
-  {name:"🏫 학군", rows:[
-    {lab:"배정 초등", get:h=>h.es+" ("+h.esScore+"점)", best:3},
-    {lab:"중학교", get:h=>h.ms, best:null},
-    {lab:"고등학교", get:h=>h.hs, best:null},
-    {lab:"등교(초등)", get:h=>h.walkTxt, best:2}
-  ]},
-  {name:"💵 비용", rows:[
-    {lab:"보증금", get:h=>h.deposit, best:null},
-    {lab:"유틸리티", get:h=>h.util, best:null},
-    {lab:"HOA", get:h=>h.hoa, best:null},
-    {lab:"반려동물", get:h=>h.pets, best:null}
-  ]},
-  {name:"🛋️ 생활", rows:[
-    {lab:"세탁", get:h=>h.laundry, best:null},
-    {lab:"주차", get:h=>h.parking, best:null},
-    {lab:"리스기간", get:h=>h.lease, best:null}
-  ]},
-  {name:"📍 동네·출근", rows:[
-    {lab:"지역·특징", get:h=>h.nbhd, best:null},
-    {lab:"출근길(MedStar 병원)", get:h=>h.commuteTxt, best:0}
-  ]}
-];
-function renderTable(){
-  let html='<thead><tr><th class="lab"></th>'+
-    HOUSES.map(h=>`<th><div class="colhead">${h.short.split(" ").slice(0,2).join(" ")}<span class="hrent">${h.rent}</span><span class="hsc">${h.area} · ${h.es} ${h.esScore}점</span></div></th>`).join("")+
-    '</tr></thead><tbody>';
-  for(const g of GROUPS){
-    html+=`<tr class="grp"><td colspan="5">${g.name}</td></tr>`;
-    for(const r of g.rows){
-      html+=`<tr><td class="lab">${r.lab}</td>`+
-        HOUSES.map((h,i)=>{
-          const isBest=r.best===i;
-          return `<td class="${isBest?'best':''}">${r.get(h)}${isBest?'<span class="bstar">▲ 유리</span>':''}</td>`;
-        }).join("")+'</tr>';
-    }
-  }
-  html+='</tbody>';
-  document.getElementById("cmp").innerHTML=html;
-}
-
-/* ===== 장단점 카드 ===== */
-const TYPECOLOR={"타운하우스":"#3D6B9E","단독주택":"#8A5A2B","주택(A-Frame)":"#8A5A2B"};
 function renderCards(){
-  document.getElementById("cards").innerHTML=HOUSES.map(h=>{
-    const col=TYPECOLOR[h.type]||"#5C6E64";
-    const pros=h.pros.map(p=>`<div class="li"><span class="ic">＋</span><span>${p}</span></div>`).join("");
-    const cons=h.cons.map(c=>`<div class="li"><span class="ic">－</span><span>${c}</span></div>`).join("");
-    return `<div class="pcard" style="border-left-color:${col}">
-      <h3>${h.short} <span class="pr">${h.rent}</span></h3>
-      <div class="sub">${h.type} · ${h.beds}bd/${h.baths}ba · ${h.sqft.toLocaleString()} sqft · ${h.area} · ${h.es} 초등 ${h.esScore}점 → ${h.hs}</div>
-      <div class="pl pro">${pros}</div>
-      <div class="divider"></div>
-      <div class="pl con">${cons}</div>
-      <div class="acts">
-        <a class="act" target="_blank" rel="noopener" href="${zlink(h)}"><span class="ic">🏠</span>집구경</a>
-        <a class="act" target="_blank" rel="noopener" href="${gmapsSearch(h.fullAddr)}"><span class="ic">📍</span>지도</a>
-        <a class="act" target="_blank" rel="noopener" href="${h.esLink}"><span class="ic">🏫</span>학교</a>
-        <a class="act" target="_blank" rel="noopener" href="${gmapsDir(h.fullAddr,h.esAddr,'walking')}"><span class="ic">🚶</span>등교길</a>
-        <a class="act" target="_blank" rel="noopener" href="${gmapsDir(h.fullAddr,HOSPITAL,'driving')}"><span class="ic">🚗</span>출근길</a>
+  const list=homes();
+  const box=document.getElementById("cards");
+  box.innerHTML=list.map(h=>{
+    const wb=walkbus(h.es.dist);
+    const grp=h._g==="new"?'<span class="grouplabel newg">신규 ES9+</span>':'<span class="grouplabel">진행 후보</span>';
+    return `<div class="home">
+      <h3>${h.name} ${grp}</h3>
+      <div class="addr">${h.address} · ${h.type}</div>
+      <div class="kv">
+        <span class="big">$${h.rent.toLocaleString()}/mo</span>
+        <span>${h.beds}bd/${h.baths}ba</span>
+        <span>${h.sqft.toLocaleString()} sqft</span>
+        <span>입주 ${h.avail}</span>
+        <span>🎓 ${h.es.name} ${h.es.score}/10 · ${h.es.dist}mi <b class="${wb.c==='walk'?'':''}">${wb.t}</b></span>
+        <span>🚗 MedStar 약 ${h.commute}분</span>
+      </div>
+      ${h.flag?`<div class="warnbanner">⚠ ${h.flag}</div>`:""}
+      <div class="pc">
+        <div class="plus"><h4>＋ 장점</h4><ul>${h.pros.map(p=>`<li>${p}</li>`).join("")}</ul></div>
+        <div class="minus"><h4>－ 단점</h4><ul>${h.cons.map(c=>`<li>${c}</li>`).join("")}</ul></div>
+      </div>
+      <div class="links">
+        <a href="${h.url}" target="_blank" rel="noopener">집구경(Zillow)</a>
+        <a class="alt" href="${mapsSearch(h.address)}" target="_blank" rel="noopener">지도</a>
+        <a class="alt" href="${gsLink(h.es.name)}" target="_blank" rel="noopener">학교(GreatSchools)</a>
+        <a class="alt" href="${walkLink(h.address,h.es.name)}" target="_blank" rel="noopener">등교길(도보)</a>
+        <a class="alt" href="${driveLink(h.address)}" target="_blank" rel="noopener">출근길(MedStar,차량)</a>
       </div>
     </div>`;
   }).join("");
 }
 
-/* init */
-renderPresets(); renderSliders(); renderRanks(); renderMatrix(); renderTable(); renderCards();
+function renderExcluded(){
+  document.getElementById("excl").innerHTML=DATA.excluded.map(e=>
+    `<div class="x"><b>✕ ${e.a}</b><br><span class="r">${e.r}</span></div>`).join("");
+}
+
+function setPreset(p){
+  const w=PRESETS[p];KEYS.forEach(k=>{document.getElementById("w_"+k).value=w[k];document.getElementById("v_"+k).textContent=w[k];});
+  document.querySelectorAll("#preset button").forEach(b=>b.classList.toggle("on",b.dataset.p===p));
+  renderRanking();
+}
+function refreshAll(){renderRanking();renderCompare();renderCards();}
+
+// events
+KEYS.forEach(k=>{
+  document.getElementById("w_"+k).addEventListener("input",e=>{
+    document.getElementById("v_"+k).textContent=e.target.value;
+    document.querySelectorAll("#preset button").forEach(b=>b.classList.remove("on"));
+    renderRanking();
+  });
+});
+document.querySelectorAll("#preset button").forEach(b=>b.addEventListener("click",()=>setPreset(b.dataset.p)));
+document.getElementById("basisToggle").addEventListener("click",function(){
+  const b=document.getElementById("basis");const open=b.style.display==="block";
+  b.style.display=open?"none":"block";this.textContent=(open?"▸":"▾")+" 점수 근거 보기";
+});
+document.querySelectorAll("#tabs .tab").forEach(t=>t.addEventListener("click",()=>{
+  document.querySelectorAll("#tabs .tab").forEach(x=>x.classList.remove("on"));
+  t.classList.add("on");group=t.dataset.g;refreshAll();
+}));
+
+renderExcluded();
+refreshAll();
 </script>
 </body>
 </html>
