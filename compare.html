@@ -27,7 +27,6 @@
   .tab{flex:1;min-width:90px;border:1px solid var(--line);background:#fff;color:var(--sub);border-radius:999px;
        padding:8px 6px;font-size:12.5px;font-weight:700;cursor:pointer;text-align:center;}
   .tab.on{background:var(--g1);color:#fff;border-color:var(--g1)}
-  /* sliders */
   .preset{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
   .preset button{border:1px solid var(--g2);background:#fff;color:var(--g1);border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:700;cursor:pointer}
   .preset button.on{background:var(--g2);color:#fff}
@@ -35,7 +34,6 @@
   .slider label{display:flex;justify-content:space-between;font-size:13px;font-weight:700;margin-bottom:4px}
   .slider label .v{color:var(--g1)}
   input[type=range]{width:100%;accent-color:var(--g1);height:26px}
-  /* ranking bars */
   .rankrow{display:flex;align-items:center;gap:8px;margin:7px 0;font-size:13px}
   .rankrow .nm{width:112px;flex:0 0 112px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .bar{flex:1;background:var(--g3);border-radius:8px;height:22px;position:relative;overflow:hidden}
@@ -43,13 +41,11 @@
   .bar>i{position:absolute;right:6px;top:0;line-height:22px;font-style:normal;font-size:11.5px;font-weight:800;color:#0c2a18}
   .rankrow .badge{flex:0 0 22px;text-align:center;font-weight:800;color:var(--g1)}
   .rank1 .nm{color:var(--g1)}
-  .linkbtn{display:inline-block;font-size:11px;color:var(--g1);text-decoration:none;border:1px solid var(--g4);border-radius:8px;padding:2px 7px;margin-top:3px}
   .basis{display:none;margin-top:10px;overflow-x:auto}
   table{border-collapse:collapse;width:100%;font-size:12px}
   .basis th,.basis td{border:1px solid var(--line);padding:5px 7px;text-align:center;white-space:nowrap}
   .basis th{background:var(--g3);position:sticky;top:0}
   .toggle{margin-top:10px;font-size:12.5px;color:var(--g1);font-weight:700;cursor:pointer;text-decoration:underline}
-  /* compare table */
   .cmpwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border:1px solid var(--line);border-radius:12px}
   table.cmp{border-collapse:separate;border-spacing:0;font-size:12px;min-width:640px}
   table.cmp th,table.cmp td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:7px 8px;vertical-align:top}
@@ -61,7 +57,6 @@
   .best::after{content:" ▲";color:var(--g1);font-size:10px}
   .tag{display:inline-block;font-size:10px;font-weight:700;border-radius:6px;padding:1px 6px;margin-top:2px}
   .tag.walk{background:#e5f6ec;color:var(--g1)} .tag.bus{background:#fff0e5;color:var(--warn)}
-  /* pro/con cards */
   .home{border:1px solid var(--line);border-radius:14px;padding:13px;margin-bottom:12px;background:#fff}
   .home h3{margin:0 0 3px;font-size:15.5px}
   .home .addr{font-size:12px;color:var(--sub);margin-bottom:8px}
@@ -104,7 +99,6 @@
     <div class="tab" data-g="new">신규 ES9+ (3)</div>
   </div>
 
-  <!-- SCORER -->
   <div class="card">
     <h2><span class="em">🏆</span> 중요도 점수 계산기</h2>
     <div class="preset" id="preset">
@@ -123,20 +117,17 @@
     <div class="basis" id="basis"></div>
   </div>
 
-  <!-- COMPARE TABLE -->
   <div class="card">
     <h2><span class="em">📊</span> 나란히 비교표</h2>
     <div style="font-size:11.5px;color:var(--sub);margin-bottom:8px">가장 유리한 칸은 <span style="color:var(--g1);font-weight:700">초록 테두리 ▲</span>로 자동 강조. 좌우로 스크롤하세요.</div>
     <div class="cmpwrap"><table class="cmp" id="cmp"></table></div>
   </div>
 
-  <!-- PRO/CON CARDS -->
   <div class="card">
     <h2><span class="em">⚖️</span> 장단점 · 링크</h2>
     <div id="cards"></div>
   </div>
 
-  <!-- EXCLUDED -->
   <div class="card excluded">
     <h2><span class="em">🚫</span> 이미 제외된 후보</h2>
     <div id="excl"></div>
@@ -167,12 +158,12 @@ const DATA = {
      pros:["선호하는 타운하우스","Bannockburn9·Pyle10·Whitman9 명문라인","즉시 입주"],cons:["초등 1.2mi·스쿨버스","세입자가 모든 유틸리티+잔디/관리 부담","면적 최소 1,452sqft","기존 지원자 있어 백업 성격"],flag:"기존 지원자 존재 — 무산 시 연락(백업)"}
   ],
   new:[
-    {id:"westlake14",name:"7470 Westlake Ter #14",address:"7470 Westlake Ter #14, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/7470-Westlake-Ter-14-Bethesda-MD-20817/37264191_zpid/",type:"타운하우스",beds:4,baths:3.5,sqft:2214,rent:3850,avail:"2026-08-01",furnished:false,parking:"확인 필요",utilities:"확인 필요",es:{name:"Ashburton ES",score:9,dist:1.4},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:37,safety:87,foreign:"미확인(신규·미연락)",
-     pros:["선호하는 타운하우스","가성비 좋음 $3,850","8/1 입주","Ashburton 9점 라인"],cons:["초등 1.4mi·스쿨버스","출근길 약 37분","아직 연락/검증 전(신규 발굴)"],flag:"신규 발굴 — 랜딩헬프 미컨택"},
-    {id:"westlake56",name:"7572 Westlake Ter #56",address:"7572 Westlake Ter #56, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/7572-Westlake-Ter-56-Bethesda-MD-20817/37264852_zpid/",type:"타운하우스",beds:4,baths:3.5,sqft:2428,rent:4000,avail:"즉시",furnished:false,parking:"확인 필요",utilities:"확인 필요",es:{name:"Ashburton ES",score:9,dist:1.4},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:37,safety:87,foreign:"미확인(신규·미연락)",
-     pros:["넓은 타운하우스 2,428sqft","즉시 입주","Ashburton 9점 라인","7470과 같은 단지"],cons:["초등 1.4mi·스쿨버스","출근길 약 37분","리스 기간 표기 없음(확인)","아직 연락/검증 전"],flag:"신규 발굴 — 랜딩헬프 미컨택"},
-    {id:"bradleyhills",name:"(비공개) Bradley Hills",address:"(비공개 주소) Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/Bethesda-MD-20817/37179594_zpid/",type:"단독주택",beds:4,baths:3,sqft:1418,rent:3900,avail:"2026-07-30",furnished:false,parking:"확인 필요",utilities:"확인 필요",es:{name:"Bradley Hills ES",score:9,dist:0.4},ms:{name:"Thomas W. Pyle MS",score:10},hs:{name:"Walt Whitman HS",score:9},commute:30,safety:90,foreign:"미확인(신규·미연락)",
-     pros:["Bradley Hills9·Pyle10·Whitman9 명문라인, 초등 도보권(0.4mi)","가성비 $3,900","7/30 입주"],cons:["Zillow 주소 비공개(정확 위치·지도 제한)","면적 최소 1,418sqft","아직 연락/검증 전"],flag:"주소 비공개 매물 — 정확 위치 확인 필요"}
+    {id:"westlake14",name:"7470 Westlake Ter #14",address:"7470 Westlake Ter #14, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/7470-Westlake-Ter-14-Bethesda-MD-20817/37264191_zpid/",type:"타운하우스",beds:4,baths:3.5,sqft:2214,rent:3850,avail:"2026-08-01",furnished:false,parking:"단지 주차(게스트 포함)",utilities:"확인 필요",es:{name:"Ashburton ES",score:9,dist:1.4},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:37,safety:87,foreign:"미확인 — 집주인 직접(연락처 확보)",
+     pros:["선호하는 타운하우스","리스 1년 가능(확인)·반려동물 OK","가성비 $3,850·보증금 1개월","단지 수영장·테니스, 8/1 입주"],cons:["초등 1.4mi·스쿨버스","출근길 약 37분","외국인 지원 여부만 미확인"],flag:null},
+    {id:"westlake56",name:"7572 Westlake Ter #56",address:"7572 Westlake Ter #56, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/7572-Westlake-Ter-56-Bethesda-MD-20817/37264852_zpid/",type:"타운하우스",beds:4,baths:3.5,sqft:2428,rent:4000,avail:"즉시",furnished:false,parking:"단지 주차",utilities:"확인 필요",es:{name:"Ashburton ES",score:9,dist:1.4},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:37,safety:87,foreign:"미확인 — Compass 에이전트(연락처 확보)",
+     pros:["넓은 타운하우스 2,428sqft","반려동물 OK·단지 수영장·테니스","즉시 입주","Ashburton 9점 라인·7470과 같은 단지"],cons:["초등 1.4mi·스쿨버스","출근길 약 37분","리스 기간 미표기(문의 필요)","외국인 지원 여부 미확인"],flag:"리스 기간 미표기 — 문의 필요"},
+    {id:"bradleyhills",name:"(비공개) Bradley Hills",address:"(비공개 주소) Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/Bethesda-MD-20817/37179594_zpid/",type:"단독주택",beds:4,baths:3,sqft:1418,rent:3900,avail:"2026-07-30",furnished:false,parking:"off-street parking",utilities:"확인 필요",es:{name:"Bradley Hills ES",score:9,dist:0.4},ms:{name:"Thomas W. Pyle MS",score:10},hs:{name:"Walt Whitman HS",score:9},commute:30,safety:90,foreign:"미확인 — 집주인 직접(연락처 확보)",
+     pros:["Bradley Hills9·Pyle10·Whitman9 명문라인, 초등 도보권(0.4mi)","리스 1년 가능(확인)·개 OK","중앙냉방·인유닛 세탁·가성비 $3,900","7/30 입주"],cons:["Zillow 주소 비공개(정확 위치·지도 제한)","면적 최소 1,418sqft","외국인 지원 여부만 미확인"],flag:"주소 비공개 매물 — 정확 위치 확인 필요"}
   ],
   excluded:[
     {a:"5042 Bradley Blvd, Chevy Chase 20815",r:"다른 지원자로 계약 확정 → Off market(오늘 확인)"},
@@ -260,27 +251,22 @@ function renderCompare(){
   const T=document.getElementById("cmp");
   const grp=(label)=>`<tr class="grp"><td class="rowh" style="background:var(--g3);color:var(--g1)">${label}</td>${'<td></td>'.repeat(n)}</tr>`;
   let html="";
-  // header
   html+=`<thead><tr><th class="rowh">항목</th>${list.map(h=>`<th>${h.name}<div style="font-weight:400;font-size:10.5px;opacity:.9">${h._g==="new"?"신규 ES9+":"진행 후보"}</div></th>`).join("")}</tr></thead><tbody>`;
-  // 한눈에
   html+=grp("한눈에");
   html+=`<tr><td class="rowh">형태</td>${list.map(h=>td(h.type)).join("")}</tr>`;
   html+=`<tr><td class="rowh">월세</td>${list.map(h=>td("$"+h.rent.toLocaleString(),h.rent===minRent)).join("")}</tr>`;
   html+=`<tr><td class="rowh">방/욕실</td>${list.map(h=>td(h.beds+"bd / "+h.baths+"ba",h.beds===maxBeds)).join("")}</tr>`;
   html+=`<tr><td class="rowh">면적</td>${list.map(h=>td(h.sqft.toLocaleString()+" sqft",h.sqft===maxSqft)).join("")}</tr>`;
   html+=`<tr><td class="rowh">입주가능</td>${list.map(h=>td(h.avail)).join("")}</tr>`;
-  // 학군
   html+=grp("🎓 학군(등교)");
   html+=`<tr><td class="rowh">배정 초등</td>${list.map(h=>td(h.es.name)).join("")}</tr>`;
   html+=`<tr><td class="rowh">초등 등급</td>${list.map(h=>td(h.es.score+"/10",h.es.score===maxEs)).join("")}</tr>`;
   html+=`<tr><td class="rowh">초등 거리</td>${list.map(h=>{const wb=walkbus(h.es.dist);return td(h.es.dist+"mi <span class='tag "+wb.c+"'>"+wb.t+"</span>",wb.c==="walk");}).join("")}</tr>`;
   html+=`<tr><td class="rowh">중/고</td>${list.map(h=>td(h.ms.name+" "+h.ms.score+"·"+h.hs.name+" "+h.hs.score)).join("")}</tr>`;
-  // 비용
   html+=grp("💵 비용");
   html+=`<tr><td class="rowh">주차</td>${list.map(h=>td(h.parking)).join("")}</tr>`;
   html+=`<tr><td class="rowh">유틸리티</td>${list.map(h=>td(h.utilities)).join("")}</tr>`;
   html+=`<tr><td class="rowh">가구</td>${list.map(h=>td(h.furnished?"가구 포함":"미포함",h.furnished)).join("")}</tr>`;
-  // 생활/출근
   html+=grp("🚗 출근길·생활");
   html+=`<tr><td class="rowh">MedStar 통근</td>${list.map(h=>td("약 "+h.commute+"분",h.commute===minCom)).join("")}</tr>`;
   html+=`<tr><td class="rowh">외국인 지원</td>${list.map(h=>td(h.foreign)).join("")}</tr>`;
@@ -308,7 +294,7 @@ function renderCards(){
         <span>${h.beds}bd/${h.baths}ba</span>
         <span>${h.sqft.toLocaleString()} sqft</span>
         <span>입주 ${h.avail}</span>
-        <span>🎓 ${h.es.name} ${h.es.score}/10 · ${h.es.dist}mi <b class="${wb.c==='walk'?'':''}">${wb.t}</b></span>
+        <span>🎓 ${h.es.name} ${h.es.score}/10 · ${h.es.dist}mi ${wb.t}</span>
         <span>🚗 MedStar 약 ${h.commute}분</span>
       </div>
       ${h.flag?`<div class="warnbanner">⚠ ${h.flag}</div>`:""}
@@ -339,7 +325,6 @@ function setPreset(p){
 }
 function refreshAll(){renderRanking();renderCompare();renderCards();}
 
-// events
 KEYS.forEach(k=>{
   document.getElementById("w_"+k).addEventListener("input",e=>{
     document.getElementById("v_"+k).textContent=e.target.value;
