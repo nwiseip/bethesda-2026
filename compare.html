@@ -3,29 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-<title>Bethesda 임대 후보 비교 (2026-07-15)</title>
+<title>Bethesda 임대 후보 비교 (2026-07-29)</title>
 <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
 <style>
   :root{
     --g1:#1b7a4b; --g2:#2e9e63; --g3:#e8f5ee; --g4:#d3ecdd;
     --ink:#14321f; --sub:#4c6b58; --line:#d5e5db; --bg:#f4faf6;
-    --warn:#b3541e; --warnbg:#fff4ea; --gold:#1b7a4b;
-    --bad:#c0392b;
+    --warn:#b3541e; --warnbg:#fff4ea; --bad:#c0392b;
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family:'Pretendard',system-ui,sans-serif;background:var(--bg);color:var(--ink);
-       -webkit-text-size-adjust:100%;line-height:1.5;}
+  body{margin:0;font-family:'Pretendard',system-ui,sans-serif;background:var(--bg);color:var(--ink);-webkit-text-size-adjust:100%;line-height:1.5;}
   .wrap{max-width:920px;margin:0 auto;padding:14px 12px 60px;}
   header h1{font-size:20px;margin:2px 0 6px;font-weight:800;}
   .meta{font-size:12px;color:var(--sub);background:#fff;border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:12px;}
   .meta b{color:var(--g1)}
   .meta .warnrow{color:var(--warn);margin-top:6px;font-weight:600;}
+  .newsbanner{background:linear-gradient(90deg,#eafaf0,#f4faf6);border:1.5px solid var(--g1);border-radius:12px;padding:11px 13px;margin-bottom:12px;font-size:13px;font-weight:700;color:var(--g1)}
+  .newsbanner small{display:block;font-weight:500;color:var(--sub);font-size:11.5px;margin-top:3px}
   .card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px;box-shadow:0 1px 2px rgba(20,50,31,.04);}
   h2{font-size:16px;margin:0 0 10px;font-weight:800;display:flex;align-items:center;gap:6px;}
   h2 .em{font-size:18px}
   .tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
-  .tab{flex:1;min-width:90px;border:1px solid var(--line);background:#fff;color:var(--sub);border-radius:999px;
-       padding:8px 6px;font-size:12.5px;font-weight:700;cursor:pointer;text-align:center;}
+  .tab{flex:1;min-width:90px;border:1px solid var(--line);background:#fff;color:var(--sub);border-radius:999px;padding:8px 6px;font-size:12.5px;font-weight:700;cursor:pointer;text-align:center;}
   .tab.on{background:var(--g1);color:#fff;border-color:var(--g1)}
   .preset{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
   .preset button{border:1px solid var(--g2);background:#fff;color:var(--g1);border-radius:999px;padding:7px 12px;font-size:12.5px;font-weight:700;cursor:pointer}
@@ -35,7 +34,7 @@
   .slider label .v{color:var(--g1)}
   input[type=range]{width:100%;accent-color:var(--g1);height:26px}
   .rankrow{display:flex;align-items:center;gap:8px;margin:7px 0;font-size:13px}
-  .rankrow .nm{width:112px;flex:0 0 112px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .rankrow .nm{width:120px;flex:0 0 120px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .bar{flex:1;background:var(--g3);border-radius:8px;height:22px;position:relative;overflow:hidden}
   .bar>span{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,var(--g2),var(--g1));border-radius:8px;}
   .bar>i{position:absolute;right:6px;top:0;line-height:22px;font-style:normal;font-size:11.5px;font-weight:800;color:#0c2a18}
@@ -58,11 +57,13 @@
   .tag{display:inline-block;font-size:10px;font-weight:700;border-radius:6px;padding:1px 6px;margin-top:2px}
   .tag.walk{background:#e5f6ec;color:var(--g1)} .tag.bus{background:#fff0e5;color:var(--warn)}
   .home{border:1px solid var(--line);border-radius:14px;padding:13px;margin-bottom:12px;background:#fff}
+  .home.approved{border:2px solid var(--g1);box-shadow:0 0 0 3px #eafaf0}
   .home h3{margin:0 0 3px;font-size:15.5px}
   .home .addr{font-size:12px;color:var(--sub);margin-bottom:8px}
   .kv{display:flex;flex-wrap:wrap;gap:5px 10px;font-size:12px;margin-bottom:8px}
   .kv span{background:var(--g3);border-radius:7px;padding:3px 8px}
   .kv .big{background:var(--g1);color:#fff;font-weight:800}
+  .okbanner{background:#eafaf0;border:1px solid var(--g2);color:var(--g1);font-size:12px;border-radius:9px;padding:7px 10px;margin-bottom:8px;font-weight:700}
   .warnbanner{background:var(--warnbg);border:1px solid #f0d5bd;color:var(--warn);font-size:12px;border-radius:9px;padding:7px 10px;margin-bottom:8px;font-weight:600}
   .pc{display:flex;gap:8px;flex-wrap:wrap}
   .pc>div{flex:1;min-width:150px}
@@ -83,18 +84,23 @@
 <div class="wrap">
   <header>
     <h1>🏡 Bethesda 임대 후보 비교</h1>
+    <div class="newsbanner">✅ 9502 Ewing Dr — 집주인 승인 완료(2026-07-29). 이번 주 내 계약서 발송 예정, 계약시작 9/1 전후.
+      <small>계약서 검토·서명 전이라, 아래는 최종 확정 전 백업·비교용입니다. (Ewing 3bd·2ba 내부구조 영상 재확인 요청 상태)</small>
+    </div>
     <div class="meta">
-      조사기준일 <b>2026-07-15</b> · 자료: <b>Zillow · GreatSchools 실시간 확인 + 랜딩헬프 카톡</b><br>
+      조사기준일 <b>2026-07-29</b> · 자료: <b>Zillow · GreatSchools 실시간 확인 + 랜딩헬프 카톡</b><br>
       출근지: <b>MedStar Washington Hospital Center</b> (110 Irving St NW, DC 20010)<br>
-      · <b>등교(초등)</b> ≠ <b>출근길(MedStar 병원)</b> — 라벨을 구분해 표기했습니다.<br>
+      · <b>등교(초등)</b> ≠ <b>출근길(MedStar 병원)</b> — 라벨 구분 표기.<br>
       · 거리·통근시간은 <b>추정</b>이며, 배정 초등·부대비용은 입주 전 최종 확인 필요.<br>
       · 스쿨버스: 초등 <b>1마일 초과 = 버스</b>, <b>1마일 미만 = 도보권</b>(MCPS).
-      <div class="warnrow">⚠ 소득심사: 다수 집주인이 월세의 3배 연소득 요구(예 $4,500 → 연 $162,000). 부부 합산소득·잔고증명 준비 권장.</div>
+      <div class="warnrow">⚠ 소득심사: 다수 집주인이 월세의 3배 연소득 요구. 부부 합산소득·잔고증명 준비 권장.</div>
     </div>
   </header>
 
   <div class="tabs" id="tabs">
-    <div class="tab on" data-g="active">진행 후보 (7)</div>
+    <div class="tab on" data-g="all">전체 (12)</div>
+    <div class="tab" data-g="active">진행 후보 (8)</div>
+    <div class="tab" data-g="new">추가 검토 R·K (4)</div>
   </div>
 
   <div class="card">
@@ -132,7 +138,7 @@
   </div>
 
   <div class="foot">
-    데이터는 조사시점(2026-07-15) 기준이며 매물 상태·가격·학군 등급은 변동될 수 있습니다.<br>
+    데이터는 조사시점(2026-07-29) 기준이며 매물 상태·가격·학군 등급은 변동될 수 있습니다.<br>
     배정 학교·리스 기간·부대비용·외국인 지원 가능 여부는 집주인/관리사·MCPS 확인이 필요합니다.
   </div>
 </div>
@@ -140,14 +146,16 @@
 <script>
 const DATA = {
   active: [
-    {id:"ewing",name:"9502 Ewing Dr",address:"9502 Ewing Dr, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/9502-Ewing-Dr-Bethesda-MD-20817/37177934_zpid/",type:"단독주택",beds:3,baths:2,sqft:1597,rent:3200,avail:"2026-09-01",furnished:true,parking:"확인 필요(2대)",utilities:"확인 필요",es:{name:"Wyngate ES",score:9,dist:0.2},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:31,safety:88,foreign:"가능(현 세입자 프랑스인)",
-     pros:["월세 최저 $3,200","가구 포함(furnished)","Wyngate 초등 9점 도보권(0.2mi)","외국인 입주 확인됨"],cons:["9/1 입주(계약 조정 필요)","출근길 다소 긺(북쪽)","3베드로 가장 작음","현 세입자 거주 중 투어 제약"],flag:"가구 포함 매물 — 짐/가구 계획 확인"},
+    {id:"ewing",name:"9502 Ewing Dr",address:"9502 Ewing Dr, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/9502-Ewing-Dr-Bethesda-MD-20817/37177934_zpid/",type:"단독주택",beds:3,baths:2,sqft:1597,rent:3200,avail:"2026-09-01",furnished:true,parking:"확인 필요(2대)",utilities:"테넌트 부담(전기·가스·수도·잔디)+인터넷 $50~90",es:{name:"Wyngate ES",score:9,dist:0.2},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:31,safety:88,foreign:"✅ 집주인 승인 완료(7/29)",ok:"집주인 승인 완료(7/29) · 계약서 검토 예정 · 계약시작 9/1 전후",
+     pros:["✅ 집주인 승인 완료 — 계약서 진행 중","월세 최저 $3,200·가구 포함","Wyngate 초등 9점 도보권(0.2mi)","외국인 입주 확인됨"],cons:["3bd·2ba 내부구조 영상 재확인 중","출근길 다소 긺(약 31분)","3베드로 가장 작음","전기·가스·수도·잔디 세입자 부담"],flag:null},
+    {id:"westland6504",name:"6504 Westland Rd",address:"6504 Westland Rd, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/6504-Westland-Rd-Bethesda-MD-20817/37185779_zpid/",type:"단독주택",beds:4,baths:3,sqft:1954,rent:4100,avail:"2026-08-10",furnished:false,parking:"확인 필요",utilities:"테넌트 부담",es:{name:"Wyngate ES",score:9,dist:0.4},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:35,safety:88,foreign:"Zillow 지원 진행(해외 IP/VPN 이슈로 재시도 예정)",
+     pros:["리스 1년·8/10 입주(입국 일정 부합)","Wyngate 초등 9점 도보권(0.4mi)","4bd/3ba 단독","토요일 실사 영상 확보"],cons:["Ewing 무산 대비 백업 성격","반려동물 case-by-case","중개인(Susan) 전화 연결 어려움","출근길 약 35분"],flag:"Zillow 온라인 지원 중 — 해외 IP 차단으로 VPN 재시도 필요"},
     {id:"rannoch",name:"6703 Rannoch Rd",address:"6703 Rannoch Rd, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/6703-Rannoch-Rd-Bethesda-MD-20817/37188856_zpid/",type:"단독주택",beds:4,baths:2.5,sqft:2486,rent:4200,avail:"2026-08-17",furnished:false,parking:"차고1 + 게스트주차",utilities:"확인 필요",es:{name:"Bannockburn ES",score:9,dist:0.2},ms:{name:"Thomas W. Pyle MS",score:10},hs:{name:"Walt Whitman HS",score:9},commute:28,safety:90,foreign:"가능(소득배수 기준은 집주인 결정)",
      pros:["아내가 위치 가장 선호","최근 전체 리노베이션(거의 새집)","Bannockburn9·Pyle10·Whitman9 명문라인, 초등 도보권","가장 넓음 2,486sqft"],cons:["8/17 입주·쇼잉 8/15부터","차고 1대(2번째는 게스트주차)","집주인 여행으로 연락지연 이력"],flag:null},
     {id:"pleasantgate",name:"9758 Pleasant Gate Ln",address:"9758 Pleasant Gate Ln, Potomac, MD 20854",url:"https://www.zillow.com/homedetails/9758-Pleasant-Gate-Ln-Potomac-MD-20854/37268697_zpid/",type:"단독주택",beds:4,baths:3,sqft:2020,rent:3995,avail:"즉시(8/1 협의)",furnished:false,parking:"차고없음·지정주차 2칸",utilities:"확인 필요",es:{name:"Seven Locks ES",score:10,dist:2.4},ms:{name:"Cabin John MS",score:9},hs:{name:"Winston Churchill HS",score:9},commute:37,safety:92,foreign:"집주인 매우 우호적",
      pros:["Seven Locks 초등 10점(전체 최고)","단지 수영장·테니스·피클볼","집주인 매우 우호적","비어있어 바로 정리 가능"],cons:["초등 2.4mi·스쿨버스(도보 불가)","출근길 최장(약 37분)·Potomac","차고 없음(지정주차 2칸)"],flag:null},
     {id:"wilmett",name:"6400 Wilmett Rd",address:"6400 Wilmett Rd, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/6400-Wilmett-Rd-Bethesda-MD-20817/37177607_zpid/",type:"단독주택",beds:4,baths:3,sqft:2066,rent:4200,avail:"2026-08-01",furnished:false,parking:"확인 필요(2대)",utilities:"확인 필요",es:{name:"Wyngate ES",score:9,dist:0.1},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:32,safety:88,foreign:"미확인(관리사 연결 안 됨)",
-     pros:["Wyngate 초등 9점 초근접 도보권(0.1mi)","유튜브 투어 영상 존재","8/1 입주 가능"],cons:["관리사 사람 연결 안 됨·외국인 승인 미확인","정원관리·주차 등 부대조건 확인 필요"],flag:"아내 지정 최후순위 — 외국인 지원 여부 미확인"},
+     pros:["Wyngate 초등 9점 초근접 도보권(0.1mi)","유튜브 투어 영상 존재","8/1 입주 가능"],cons:["관리사 사람 연결 안 됨·외국인 승인 미확인","정원관리·주차 등 부대조건 확인 필요"],flag:"외국인 지원 여부 미확인"},
     {id:"saratoga",name:"5121 Saratoga Ave",address:"5121 Saratoga Ave, Bethesda, MD 20816",url:"https://www.zillow.com/homedetails/5121-Saratoga-Ave-Bethesda-MD-20816/37185647_zpid/",type:"단독주택",beds:4,baths:3,sqft:2200,rent:4500,avail:"즉시",furnished:false,parking:"드라이브웨이 최대 4대",utilities:"확인 필요",es:{name:"Westbrook ES",score:9,dist:0.4},ms:{name:"Westland MS",score:10},hs:{name:"B-CC HS",score:8},commute:23,safety:90,foreign:"가능(재정 증빙 시)·중앙냉난방",
      pros:["출근길 최단(약 23분, DC 근접)","드라이브웨이 최대 4대","Westbrook9·Westland10, 초등 도보권","중앙 냉난방 확인"],cons:["월세 최고 $4,500","Zillow 사진 적어 영상 확인 필요","고교 B-CC 8점(라인 중 낮음)"],flag:null},
     {id:"singleton",name:"9407 Singleton Dr",address:"9407 Singleton Dr, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/9407-Singleton-Dr-Bethesda-MD-20817/37188548_zpid/",type:"단독주택",beds:4,baths:2,sqft:1937,rent:4350,avail:"2026-08-26",furnished:false,parking:"확인 필요",utilities:"확인 필요",es:{name:"Wyngate ES",score:9,dist:0.7},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:30,safety:88,foreign:"확인 필요",
@@ -155,16 +163,25 @@ const DATA = {
     {id:"jensen",name:"7919 Jensen Pl",address:"7919 Jensen Pl, Bethesda, MD 20817",url:"https://www.zillow.com/homedetails/7919-Jensen-Pl-Bethesda-MD-20817/37197332_zpid/",type:"타운하우스",beds:4,baths:3.5,sqft:1452,rent:4100,avail:"즉시",furnished:false,parking:"off-street parking",utilities:"세입자 전액+잔디/관리, HOA 월세포함",es:{name:"Bannockburn ES",score:9,dist:1.2},ms:{name:"Thomas W. Pyle MS",score:10},hs:{name:"Walt Whitman HS",score:9},commute:30,safety:88,foreign:"확인 필요(기존 지원자 있었음)",
      pros:["선호하는 타운하우스","Bannockburn9·Pyle10·Whitman9 명문라인","즉시 입주"],cons:["초등 1.2mi·스쿨버스","세입자가 모든 유틸리티+잔디/관리 부담","면적 최소 1,452sqft","기존 지원자 있어 백업 성격"],flag:"기존 지원자 존재 — 무산 시 연락(백업)"}
   ],
-  new:[],
+  new:[
+    {id:"warner",name:"4116 Warner St",address:"4116 Warner St, Kensington, MD 20895",url:"https://www.zillow.com/homedetails/4116-Warner-St-Kensington-MD-20895/37317005_zpid/",type:"단독주택",beds:3,baths:3,sqft:1982,rent:4500,avail:"즉시",furnished:false,parking:"확인 필요",utilities:"확인 필요",es:{name:"Kensington Parkwood ES",score:9,dist:0.8},ms:{name:"North Bethesda MS",score:9},hs:{name:"Walter Johnson HS",score:9},commute:32,safety:88,foreign:"미확인(신규·미연락)",
+     pros:["Kensington Parkwood 초등 9점 도보권(0.8mi)","North Bethesda·Walter Johnson 라인","출근길 약 32분"],cons:["월세 최고급 $4,500·3베드","리스 기간 미표기(문의 필요)","Kensington(행정구역 상이)","신규·미연락"],flag:"신규 발굴 — 미연락"},
+    {id:"tildenwood",name:"6715 Tildenwood Ln",address:"6715 Tildenwood Ln, Rockville, MD 20852",url:"https://www.zillow.com/homedetails/6715-Tildenwood-Ln-Rockville-MD-20852/37096312_zpid/",type:"단독주택",beds:5,baths:2.5,sqft:2669,rent:4300,avail:"즉시",furnished:false,parking:"확인 필요",utilities:"확인 필요",es:{name:"Farmland ES",score:10,dist:0.6},ms:{name:"Tilden MS",score:8},hs:{name:"Walter Johnson HS",score:9},commute:36,safety:88,foreign:"미확인(신규·미연락)",
+     pros:["Farmland 초등 10점 도보권(0.6mi)","가장 넓음(5bd·2,669sqft)","리스 1년","가성비($4,300에 5베드)"],cons:["중학교 Tilden 8점(라인 중 낮음)","출근길 약 36분·Rockville","신규·미연락"],flag:"신규 발굴 — 미연락"},
+    {id:"lorre",name:"1709 Lorre Dr",address:"1709 Lorre Dr, Rockville, MD 20852",url:"https://www.zillow.com/homedetails/1709-Lorre-Dr-Rockville-MD-20852/37102305_zpid/",type:"단독주택",beds:3,baths:3,sqft:1850,rent:3700,avail:"2026-08-01",furnished:false,parking:"확인 필요",utilities:"확인 필요",es:{name:"Farmland ES",score:10,dist:1.1},ms:{name:"Tilden MS",score:8},hs:{name:"Walter Johnson HS",score:9},commute:37,safety:88,foreign:"미확인(신규·미연락)",
+     pros:["월세 최저 $3,700","Farmland 초등 10점","리스 1년·8/1 입주"],cons:["초등 1.1mi·스쿨버스","중학교 Tilden 8점","출근길 약 37분·Rockville","3베드·신규 미연락"],flag:"신규 발굴 — 미연락"},
+    {id:"needleleaf",name:"6412 Needle Leaf Dr #1",address:"6412 Needle Leaf Dr #1, Rockville, MD 20852",url:"https://www.zillow.com/homedetails/6412-Needle-Leaf-Dr-1-Rockville-MD-20852/399149013_zpid/",type:"타운하우스",beds:3,baths:3,sqft:2520,rent:3950,avail:"2026-08-12",furnished:false,parking:"확인 필요",utilities:"확인 필요",es:{name:"Luxmanor ES",score:9,dist:0.6},ms:{name:"Tilden MS",score:8},hs:{name:"Walter Johnson HS",score:9},commute:37,safety:87,foreign:"미확인(신규·미연락)",
+     pros:["넓은 타운하우스(2,520sqft)","Luxmanor 초등 9점 도보권(0.6mi)","가성비 $3,950·8/12 입주"],cons:["중학교 Tilden 8점","리스 기간 미표기(문의 필요)","출근길 약 37분·Rockville","3베드·신규 미연락"],flag:"신규 발굴 — 미연락"}
+  ],
   excluded:[
-    {a:"7470 Westlake Ter #14 · 7572 Westlake Ter #56, Bethesda 20817",r:"배정 초등 Ashburton ES가 과밀(초과밀) 학교라 제외(아내 판단). 타운하우스·리스 1년 가능했으나 스킵"},
-    {a:"(비공개 주소) Bethesda 20817 — Bradley Hills 학군",r:"Zillow 주소 비공개로 정확한 위치 확인 불가 — risk로 제외"},
-    {a:"5042 Bradley Blvd, Chevy Chase 20815",r:"다른 지원자로 계약 확정 → Off market(오늘 확인)"},
-    {a:"10113 Galsworthy Pl, Bethesda 20817",r:"집주인이 1년보다 2년 계약 선호 → 지원 거절(7/15). 리노베이션·우호적 리얼터였으나 무산"},
+    {a:"7470 Westlake Ter #14 · 7572 Westlake Ter #56, Bethesda 20817",r:"배정 초등 Ashburton ES가 과밀(초과밀) 학교라 제외(아내 판단)"},
+    {a:"(비공개 주소) Bethesda 20817 — Bradley Hills 학군",r:"Zillow 주소 비공개로 정확 위치 확인 불가 — risk로 제외"},
+    {a:"5042 Bradley Blvd, Chevy Chase 20815",r:"다른 지원자로 계약 확정 → Off market"},
+    {a:"10113 Galsworthy Pl, Bethesda 20817",r:"집주인이 2년 계약 선호 → 지원 거절(7/15)"},
     {a:"10115 Galsworthy Pl, Bethesda 20817",r:"연락 두절·자동응답만 반복, 사람 연결 불가"},
     {a:"5915 Ryland Dr, Bethesda 20817",r:"집주인 multi-year(2년+) 계약 선호"},
     {a:"10106 Bosworth Ct, Bethesda 20817",r:"off market 전환"},
-    {a:"Rockville 타운홈 ($3,500)",r:"Rockville 소재 — Bethesda 지역 이탈"}
+    {a:"Rockville 타운홈 ($3,500, Janet 소개)",r:"초기 검토 시 지역 이탈로 보류(단, 이후 Rockville 추가 검토로 확장)"}
   ]
 };
 
@@ -175,7 +192,7 @@ const PRESETS = {
   space:{es:2,rent:2,commute:2,space:5,safety:3}
 };
 const KEYS=["es","rent","commute","space","safety"];
-let group="active";
+let group="all";
 
 function homes(){
   if(group==="active") return DATA.active.map(h=>({...h,_g:"active"}));
@@ -184,6 +201,7 @@ function homes(){
 }
 function weights(){const w={};KEYS.forEach(k=>w[k]=+document.getElementById("w_"+k).value);return w;}
 function walkbus(d){return d<=1.0?{t:"도보권",c:"walk"}:{t:"스쿨버스",c:"bus"};}
+function glabel(g){return g==="new"?"추가검토 R·K":"진행 후보";}
 
 function scores(list){
   const minRent=Math.min(...list.map(h=>h.rent));
@@ -200,8 +218,7 @@ function scores(list){
     };
     const w=weights();let num=0,den=0;
     KEYS.forEach(k=>{num+=w[k]*s[k];den+=w[k];});
-    const total=den?num/den:0;
-    return {h,s,total};
+    return {h,s,total:den?num/den:0};
   });
 }
 
@@ -209,10 +226,9 @@ function renderRanking(){
   const list=homes();
   const sc=scores(list).sort((a,b)=>b.total-a.total);
   const max=Math.max(...sc.map(x=>x.total),1);
-  const box=document.getElementById("ranking");
-  box.innerHTML=sc.map((x,i)=>{
+  document.getElementById("ranking").innerHTML=sc.map((x,i)=>{
     const pct=Math.round(x.total/max*100);
-    const gl=x.h._g==="new"?'<span class="grouplabel newg">신규</span>':'';
+    const gl=x.h._g==="new"?'<span class="grouplabel newg">R·K</span>':(x.h.ok?'<span class="grouplabel">승인</span>':'');
     return `<div class="rankrow ${i===0?'rank1':''}">
       <div class="badge">${i+1}</div>
       <div class="nm">${x.h.name}${gl}</div>
@@ -222,14 +238,13 @@ function renderRanking(){
   renderBasis(sc);
 }
 function renderBasis(sc){
-  const b=document.getElementById("basis");
   const head=`<tr><th>매물</th><th>학군</th><th>임대료</th><th>출근길</th><th>공간</th><th>안전</th><th>총점</th></tr>`;
   const rows=sc.map(x=>`<tr><td style="text-align:left;font-weight:700">${x.h.name}</td>
     <td>${x.s.es.toFixed(0)}</td><td>${x.s.rent.toFixed(0)}</td><td>${x.s.commute.toFixed(0)}</td>
     <td>${x.s.space.toFixed(0)}</td><td>${x.s.safety.toFixed(0)}</td>
     <td style="font-weight:800;color:var(--g1)">${x.total.toFixed(0)}</td></tr>`).join("");
-  b.innerHTML=`<table>${head}${rows}</table>
-    <div style="font-size:11px;color:var(--sub);margin-top:6px">항목 점수는 후보들끼리 0~100 정규화. 안전 점수는 지역 평판 기반 <b>정성 추정치</b>입니다.</div>`;
+  document.getElementById("basis").innerHTML=`<table>${head}${rows}</table>
+    <div style="font-size:11px;color:var(--sub);margin-top:6px">항목 점수는 후보들끼리 0~100 정규화. 안전 점수는 지역 평판 기반 <b>정성 추정치</b>.</div>`;
 }
 
 function td(txt,best){return `<td class="${best?'best':''}">${txt}</td>`;}
@@ -241,10 +256,8 @@ function renderCompare(){
   const maxBeds=Math.max(...list.map(h=>h.beds));
   const maxEs=Math.max(...list.map(h=>h.es.score));
   const n=list.length;
-  const T=document.getElementById("cmp");
   const grp=(label)=>`<tr class="grp"><td class="rowh" style="background:var(--g3);color:var(--g1)">${label}</td>${'<td></td>'.repeat(n)}</tr>`;
-  let html="";
-  html+=`<thead><tr><th class="rowh">항목</th>${list.map(h=>`<th>${h.name}<div style="font-weight:400;font-size:10.5px;opacity:.9">${h._g==="new"?"신규 ES9+":"진행 후보"}</div></th>`).join("")}</tr></thead><tbody>`;
+  let html=`<thead><tr><th class="rowh">항목</th>${list.map(h=>`<th>${h.name}<div style="font-weight:400;font-size:10.5px;opacity:.9">${glabel(h._g)}</div></th>`).join("")}</tr></thead><tbody>`;
   html+=grp("한눈에");
   html+=`<tr><td class="rowh">형태</td>${list.map(h=>td(h.type)).join("")}</tr>`;
   html+=`<tr><td class="rowh">월세</td>${list.map(h=>td("$"+h.rent.toLocaleString(),h.rent===minRent)).join("")}</tr>`;
@@ -262,25 +275,24 @@ function renderCompare(){
   html+=`<tr><td class="rowh">가구</td>${list.map(h=>td(h.furnished?"가구 포함":"미포함",h.furnished)).join("")}</tr>`;
   html+=grp("🚗 출근길·생활");
   html+=`<tr><td class="rowh">MedStar 통근</td>${list.map(h=>td("약 "+h.commute+"분",h.commute===minCom)).join("")}</tr>`;
-  html+=`<tr><td class="rowh">외국인 지원</td>${list.map(h=>td(h.foreign)).join("")}</tr>`;
-  html+=`<tr><td class="rowh">비고</td>${list.map(h=>td(h.flag?("⚠ "+h.flag):"—")).join("")}</tr>`;
+  html+=`<tr><td class="rowh">외국인/상태</td>${list.map(h=>td(h.foreign)).join("")}</tr>`;
+  html+=`<tr><td class="rowh">비고</td>${list.map(h=>td(h.ok?("✅ "+h.ok):(h.flag?("⚠ "+h.flag):"—"))).join("")}</tr>`;
   html+="</tbody>";
-  T.innerHTML=html;
+  document.getElementById("cmp").innerHTML=html;
 }
 
 function mapsSearch(a){return "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent(a);}
-function walkLink(a,school){return "https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(a)+"&destination="+encodeURIComponent(school+", Bethesda MD")+"&travelmode=walking";}
+function walkLink(a,school){return "https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(a)+"&destination="+encodeURIComponent(school+", MD")+"&travelmode=walking";}
 function driveLink(a){return "https://www.google.com/maps/dir/?api=1&origin="+encodeURIComponent(a)+"&destination="+encodeURIComponent("110 Irving St NW, Washington, DC 20010")+"&travelmode=driving";}
 function gsLink(school){return "https://www.greatschools.org/search/search.page?q="+encodeURIComponent(school)+"&state=MD";}
 
 function renderCards(){
   const list=homes();
-  const box=document.getElementById("cards");
-  box.innerHTML=list.map(h=>{
+  document.getElementById("cards").innerHTML=list.map(h=>{
     const wb=walkbus(h.es.dist);
-    const grp=h._g==="new"?'<span class="grouplabel newg">신규 ES9+</span>':'<span class="grouplabel">진행 후보</span>';
-    return `<div class="home">
-      <h3>${h.name} ${grp}</h3>
+    const gl=h._g==="new"?'<span class="grouplabel newg">추가검토 R·K</span>':'<span class="grouplabel">진행 후보</span>';
+    return `<div class="home ${h.ok?'approved':''}">
+      <h3>${h.name} ${gl}</h3>
       <div class="addr">${h.address} · ${h.type}</div>
       <div class="kv">
         <span class="big">$${h.rent.toLocaleString()}/mo</span>
@@ -290,6 +302,7 @@ function renderCards(){
         <span>🎓 ${h.es.name} ${h.es.score}/10 · ${h.es.dist}mi ${wb.t}</span>
         <span>🚗 MedStar 약 ${h.commute}분</span>
       </div>
+      ${h.ok?`<div class="okbanner">✅ ${h.ok}</div>`:""}
       ${h.flag?`<div class="warnbanner">⚠ ${h.flag}</div>`:""}
       <div class="pc">
         <div class="plus"><h4>＋ 장점</h4><ul>${h.pros.map(p=>`<li>${p}</li>`).join("")}</ul></div>
